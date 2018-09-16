@@ -1,0 +1,32 @@
+{
+  "name": "electron-react-quick-start",
+  "version": "0.1.0",
+  "main": "public/main.js",
+  "homepage": ".",
+  "dependencies": {
+    "react": "^16.5.1",
+    "react-dom": "^16.5.1",
+    "react-scripts": "1.1.5"
+  },
+  "devDependencies": {
+    "electron": "^2.0.9",
+    "electron-builder": "^20.28.4",
+    "electron-is-dev": "^0.3.0",
+    "concurrently": "^4.0.1",
+    "cross-env": "^5.2.0",
+    "wait-on": "^3.0.1"
+  },
+  "scripts": {
+    "web": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "start": "concurrently \"cross-env BROWSER=none react-scripts start\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "npm run-script build && electron-builder --win --ia32"
+  },
+  "files": [
+    "*.js",
+    "build",
+    "node_modules"
+  ]
+}
