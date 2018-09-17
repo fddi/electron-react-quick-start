@@ -19,6 +19,6 @@ npm start
 
 - [electronjs.org/docs](https://electronjs.org/docs) - all of Electron's documentation
 - [reactjs.org/docs](https://reactjs.org/docs/getting-started.html) - all of React's documentation
-
+- [ant.design/docs](https://ant.design/docs) - all of Ant Design's documentation
 ## License
 [MIT License](LICENSE.md)
