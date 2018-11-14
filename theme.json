@@ -1,0 +1,12 @@
+{
+  "@primary-color": "#1DA57A",
+  "@link-color": "#1DA57A",
+  "@icon-url":"'/assets/iconfont/iconfont'",
+  "@font-size-base":"16px",
+  "@layout-header-padding":"0px",
+  "@text-color":"fade(#000, 95%)",
+  "@border-color-base": "#888888",
+  "@border-color-split": "#cccccc",
+  "@btn-height-lg": "38px",
+  "@input-height-lg" : "38px"
+}

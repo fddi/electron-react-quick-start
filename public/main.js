@@ -1,20 +1,33 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
-console.log(isDev)
+const ffi = require('ffi')
+const path = require('path')
+const config = require('./config.json')
+
+global.shareObject={
+  config:config
+}
+
+iopath = path.join(__dirname, '/addon/test-ai32.dll');
+const testDll = ffi.Library(iopath, {
+  'HelloWorld': ['void', []]
+})
+testDll.HelloWorld()
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
   mainWindow.loadURL(
     isDev
-			? 'http://localhost:3000'
-			: `file://${path.join(__dirname, '../build/index.html')}`,
+      ? 'http://localhost:3000'
+      : `file://${path.join(__dirname, '../build/index.html')}`,
   )
 
   // Open the DevTools.
