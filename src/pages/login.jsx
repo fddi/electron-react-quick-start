@@ -30,7 +30,7 @@ class Login extends Component {
     this.props.form.validateFields((err, values) => {
       if (!err) {
         this.setState({ loading: true, errorShow: false });
-        Fetch.get(Api.getApi().login, values, (result) => {
+        Fetch.post(Api.getApi().login, values, (result) => {
           if (result && "200" == result.resultCode) {
             let tokenInfo = result.resultData;
             sessionStorage.setItem("tokenInfo", JSON.stringify(tokenInfo));
@@ -57,7 +57,7 @@ class Login extends Component {
     const { getFieldDecorator } = this.props.form;
     const loginAlert = this.state.errorShow ? (<Alert banner message={this.state.errorMsg} type="error" showIcon />) : (<div />);
     if (this.state.linkToIndex) {
-      return (<Redirect to="/index/workbench" />);
+      return (<Redirect to="/index" />);
     }
     return (
       <div className="login-div">
@@ -74,6 +74,7 @@ class Login extends Component {
                     rules: [
                       {
                         required: true,
+                        pattern:/^[A-Za-z0-9]{4,16}/,
                         message: Common.message.alertRequireUsername
                       },
                     ],

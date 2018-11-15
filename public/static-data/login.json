@@ -1,7 +1,9 @@
 {
-     "resultCode":200,
-     "resultMsg":0,
-     "resultData":{
-          
+     "resultCode": 200,
+     "resultMsg": 0,
+     "resultData": {
+          "userId": "guest",
+          "userName": "本地测试",
+          "token": "test"
      }
 }

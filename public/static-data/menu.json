@@ -1,0 +1,84 @@
+{
+     "resultCode": 200,
+     "resultData": {
+          "menuId": 1,
+          "menuName": "根节点",
+          "menuCode": "1",
+          "icon": "icon",
+          "children": [
+               {
+                    "children": [
+                         {
+                              "menuId": 11,
+                              "menuName": "导航1-1",
+                              "menuCode": "1",
+                              "icon": "icon",
+                              "children": [
+                                   {
+                                        "menuId": 111,
+                                        "menuName": "导航1-1-1",
+                                        "menuCode": "1",
+                                        "icon": "icon"
+                                   }
+                              ]
+                         },
+                         {
+                              "menuId": 12,
+                              "menuName": "导航1-2",
+                              "menuCode": "1",
+                              "icon": "icon",
+                              "children": [
+                                   {
+                                        "menuId": 121,
+                                        "menuName": "导航1-1-2",
+                                        "menuCode": "1",
+                                        "icon": "icon"
+                                   }
+                              ]
+                         }
+                    ],
+                    "menuId": 3,
+                    "menuName": "导航1",
+                    "menuCode": "1",
+                    "icon": "icon"
+               },
+               {
+                    "children": [
+                         {
+                              "menuId": 21,
+                              "menuName": "导航2-1",
+                              "menuCode": "1",
+                              "icon": "icon",
+                              "children": [
+                                   {
+                                        "menuId": 211,
+                                        "menuName": "导航2-1-1",
+                                        "menuCode": "1",
+                                        "icon": "icon"
+                                   }
+                              ]
+                         },
+                         {
+                              "menuId": 22,
+                              "menuName": "导航2-2",
+                              "menuCode": "1",
+                              "icon": "icon",
+                              "children": [
+                                   {
+                                        "menuId": 221,
+                                        "menuName": "导航2-2-1",
+                                        "menuCode": "1",
+                                        "icon": "icon"
+                                   }
+                              ]
+                         }
+                    ],
+                    "menuId": 2,
+                    "menuName": "导航2",
+                    "menuCode": "1",
+                    "icon": "icon"
+               }
+          ]
+     },
+     "resultMsg": "操作成功"
+}

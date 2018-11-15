@@ -22,9 +22,31 @@ export const exceptionShow = function (result) {
   });
 }
 
+export const fetchTimeout = function (fetch_promise, timeout) {
+  let abort_fn = null;
+  const abort_promise = new Promise((resolve, reject) => {
+    abort_fn = () => {
+      reject(false);
+    };
+  });
+  const abortable_promise = Promise.race([
+    fetch_promise,
+    abort_promise
+  ]);
+  setTimeout(() => {
+    abort_fn();
+  }, timeout);
+  return abortable_promise;
+}
+
 export default {
   post: function (url, param, callback) {
-    fetch(url, {
+    const regx = /\.json$/;
+    if (regx.test(url)) {
+      this.get(url, param, callback)
+      return
+    }
+    fetchTimeout(fetch(url, {
       method: 'POST',
       headers: {
         'Access-Control-Allow-Origin': '*',
@@ -32,7 +54,7 @@ export default {
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         'App': 'react-app'
       }, body: toQueryString(param)
-    })
+    }), 120000)
       .then((response) => response.json())
       .then(function (result) {
         if (result && "502" == result.resultCode) {
@@ -55,14 +77,14 @@ export default {
 
   get: function (url, param, callback) {
     url = url + "?" + toQueryString(param);
-    fetch(url, {
+    fetchTimeout(fetch(url, {
       method: 'GET',
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Accept': 'application/json',
         'App': 'react-app'
       }
-    })
+    }), 120000)
       .then((response) => response.json())
       .then(function (result) {
         if (result && "502" == result.resultCode) {
