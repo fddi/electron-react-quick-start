@@ -3,7 +3,7 @@
      "resultData": {
           "menuId": 1,
           "menuName": "根节点",
-          "menuCode": "1",
+          "pageId": "1",
           "icon": "icon",
           "children": [
                {
@@ -11,13 +11,13 @@
                          {
                               "menuId": 11,
                               "menuName": "导航1-1",
-                              "menuCode": "1",
+                              "pageId": "11",
                               "icon": "icon",
                               "children": [
                                    {
                                         "menuId": 111,
                                         "menuName": "导航1-1-1",
-                                        "menuCode": "1",
+                                        "pageId": "12",
                                         "icon": "icon"
                                    }
                               ]
@@ -25,13 +25,13 @@
                          {
                               "menuId": 12,
                               "menuName": "导航1-2",
-                              "menuCode": "1",
+                              "pageId": "13",
                               "icon": "icon",
                               "children": [
                                    {
                                         "menuId": 121,
                                         "menuName": "导航1-1-2",
-                                        "menuCode": "1",
+                                        "pageId": "14",
                                         "icon": "icon"
                                    }
                               ]
@@ -39,7 +39,7 @@
                     ],
                     "menuId": 3,
                     "menuName": "导航1",
-                    "menuCode": "1",
+                    "pageId": "15",
                     "icon": "icon"
                },
                {
@@ -47,13 +47,13 @@
                          {
                               "menuId": 21,
                               "menuName": "导航2-1",
-                              "menuCode": "1",
+                              "pageId": "16",
                               "icon": "icon",
                               "children": [
                                    {
                                         "menuId": 211,
                                         "menuName": "导航2-1-1",
-                                        "menuCode": "1",
+                                        "pageId": "17",
                                         "icon": "icon"
                                    }
                               ]
@@ -61,13 +61,13 @@
                          {
                               "menuId": 22,
                               "menuName": "导航2-2",
-                              "menuCode": "1",
+                              "pageId": "18",
                               "icon": "icon",
                               "children": [
                                    {
                                         "menuId": 221,
                                         "menuName": "导航2-2-1",
-                                        "menuCode": "1",
+                                        "pageId": "19",
                                         "icon": "icon"
                                    }
                               ]
@@ -75,7 +75,7 @@
                     ],
                     "menuId": 2,
                     "menuName": "导航2",
-                    "menuCode": "1",
+                    "pageId": "100",
                     "icon": "icon"
                }
           ]

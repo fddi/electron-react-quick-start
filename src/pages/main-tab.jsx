@@ -118,7 +118,7 @@ export default class MainTab extends Component {
             return;
         }
         pages.push(menu);
-        this.setState({ pages, activeKey: "chain-tab-" + menu.pageId });
+        this.setState({ pages, activeKey: "main-tab-" + menu.pageId });
     }
 
     render() {
@@ -157,6 +157,7 @@ export default class MainTab extends Component {
                             onChange={(activeKey) => { this.setState({ activeKey }) }}
                             onEdit={this.onTabEdit}
                             activeKey={this.state.activeKey}
+                            tabBarStyle={{margin:0}}
                         >
                             {this.renderTabPanes(this.state.pages)}
                         </Tabs>

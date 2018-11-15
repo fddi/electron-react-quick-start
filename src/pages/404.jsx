@@ -11,8 +11,8 @@ export default class Redirect404 extends Component {
 
      render() {
           return (
-               <Card
-                    title="工作台"
+               <Card style={{width:500,height:200}}
+                    title="错误"
                >
                     <p>Card content</p>
                </Card>

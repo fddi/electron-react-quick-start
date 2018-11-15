@@ -1,34 +1,26 @@
-import React, { Component } from 'react';
-import { Card } from 'antd';
-let PageConent = null;
+import React, { Component } from 'react'
+import Loadable from 'react-loadable'
+import Login from '../pages/login'
+let LoadableComponent
 export default class TabPage extends Component {
      constructor(props) {
-          super(props);
+          super(props)
+          LoadableComponent = Loadable({
+               loader: () => import('../pages/404'),
+               loading: Login,
+          })
           this.state = {
-               menu: {}
-          }
-          if (PageConent == null) {
-               PageConent = require("../pages/404")
-          }
-     }
-
-     componentWillReceiveProps(props) {
-          console.log("22222222222222222222222222222222222222222")
-          if (props.menu != null && JSON.stringify(props.menu) != JSON.stringify(this.state.menu)) {
-               this.setState({ menu: props.menu })
-               try {
-                    PageConent = require("../pages/" + props.menu.pageId)
-               } catch (error) {
-                    PageConent = require("../pages/404")
-               }
+               menu: props.menu,
+               component: LoadableComponent
           }
      }
 
      render() {
           console.log(this.props.menu)
-          console.log(PageConent)
+          console.log(this.state.component)
           return (
-               <PageConent handleTabPage={this.props.handleTabPage} menu={this.props.menu} />
+               <div><LoadableComponent />
+               </div>
           );
      }
 }
