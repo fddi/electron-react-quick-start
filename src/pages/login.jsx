@@ -6,7 +6,7 @@ import { Button, Row, Form, Input, Spin, Alert } from 'antd'
 import '../styles/login.css'
 import Common from '../constant/common'
 import Api from '../constant/api'
-import Fetch from '../utils/fetch'
+import Fetch from '../utils/Fetch'
 
 const {Menu} = window.require('electron').remote
 //Menu.setApplicationMenu(null)

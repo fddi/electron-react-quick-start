@@ -4,7 +4,9 @@
 */
 export default {
     routes: [
-        { path: '/index/404', component: './404' },
-        { path: '/index/workbench', component: './workbench' }
+        { path: '/index/workbench', component: 'Workbench' },
+        { path: '/index/404', component: '404' },
+        { path: '/index/hold', component: 'Hold' },
+        { path: '/index/dll', component: "CallDll" },
     ]
 }

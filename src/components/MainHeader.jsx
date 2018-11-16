@@ -12,11 +12,16 @@ class HeaderView extends Component {
           this.state = {
                userName: "",
                menus: [],
+               selectedKeys: []
           };
      }
 
      componentWillReceiveProps(props) {
-          this.setState({ menus: props.menus, userName: props.userName });
+          if (this.state.menus.length <= 0 && props.menus.length > 0) {
+               let selectedKeys = []
+               selectedKeys = [props.menus[0].menuId + ""]
+               this.setState({ menus: props.menus, userName: props.userName, selectedKeys });
+          }
      }
 
      onMenuClick(e) {
@@ -54,6 +59,8 @@ class HeaderView extends Component {
                          mode="horizontal"
                          style={{ float: "left", lineHeight: '64px' }}
                          onClick={(e) => { this.props.handleMenuTop(e) }}
+                         selectedKeys={this.state.selectedKeys}
+                         onSelect={(e) => { console.log(e); this.setState({ selectedKeys: e.selectedKeys }) }}
                     >
                          {this.buildItems(this.state.menus)}
                     </Menu>
@@ -61,7 +68,7 @@ class HeaderView extends Component {
                          key="menu-header-2"
                          theme="dark"
                          mode="horizontal"
-                         style={{ float: 'right', lineHeight: '64px', marginRight: 15 }}
+                         style={{ float: 'right', lineHeight: '64px', marginRight: 10 }}
                          onClick={(e) => { this.onMenuClick(e) }}
                     >
                          <SubMenu key="header-sm-1" title={<span><Icon type="user" />{this.state.userName}</span>}>

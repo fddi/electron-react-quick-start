@@ -3,80 +3,58 @@
      "resultData": {
           "menuId": 1,
           "menuName": "根节点",
-          "pageId": "1",
+          "pageId": "/index/workbench",
           "icon": "icon",
           "children": [
                {
                     "children": [
                          {
-                              "menuId": 11,
-                              "menuName": "导航1-1",
-                              "pageId": "11",
-                              "icon": "icon",
+                              "menuId": 111,
+                              "menuName": "原生模块",
+                              "pageId": "",
+                              "icon": "bars",
                               "children": [
                                    {
-                                        "menuId": 111,
-                                        "menuName": "导航1-1-1",
-                                        "pageId": "12",
-                                        "icon": "icon"
-                                   }
-                              ]
-                         },
-                         {
-                              "menuId": 12,
-                              "menuName": "导航1-2",
-                              "pageId": "13",
-                              "icon": "icon",
-                              "children": [
-                                   {
-                                        "menuId": 121,
-                                        "menuName": "导航1-1-2",
-                                        "pageId": "14",
-                                        "icon": "icon"
+                                        "menuId": 1111,
+                                        "menuName": "本地调用DLL",
+                                        "pageId": "/index/dll",
+                                        "icon": "bars"
                                    }
                               ]
                          }
                     ],
-                    "menuId": 3,
-                    "menuName": "导航1",
-                    "pageId": "15",
-                    "icon": "icon"
+                    "menuId": 11,
+                    "menuName": "Electron示例",
+                    "pageId": "",
+                    "icon": "bars"
                },
                {
                     "children": [
                          {
-                              "menuId": 21,
-                              "menuName": "导航2-1",
-                              "pageId": "16",
-                              "icon": "icon",
+                              "menuId": 121,
+                              "menuName": "页面",
+                              "pageId": "",
+                              "icon": "bars",
                               "children": [
                                    {
-                                        "menuId": 211,
-                                        "menuName": "导航2-1-1",
-                                        "pageId": "17",
-                                        "icon": "icon"
-                                   }
-                              ]
-                         },
-                         {
-                              "menuId": 22,
-                              "menuName": "导航2-2",
-                              "pageId": "18",
-                              "icon": "icon",
-                              "children": [
+                                        "menuId": 1211,
+                                        "menuName": "404页面",
+                                        "pageId": "/index/404",
+                                        "icon": "bars"
+                                   },
                                    {
-                                        "menuId": 221,
-                                        "menuName": "导航2-2-1",
-                                        "pageId": "19",
-                                        "icon": "icon"
+                                        "menuId": 1212,
+                                        "menuName": "加载页面",
+                                        "pageId": "/index/hold",
+                                        "icon": "bars"
                                    }
                               ]
                          }
                     ],
-                    "menuId": 2,
-                    "menuName": "导航2",
-                    "pageId": "100",
-                    "icon": "icon"
+                    "menuId": 12,
+                    "menuName": "界面示例",
+                    "pageId": "",
+                    "icon": "bars"
                }
           ]
      },

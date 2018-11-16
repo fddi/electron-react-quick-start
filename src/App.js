@@ -4,22 +4,22 @@ import {
   Route,
   Switch
 } from 'react-router-dom';
-import asyncComponent from "./utils/async-component";
+import asyncComponent from "./utils/AsyncComponent";
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
-const login = asyncComponent(() => import('./pages/login'));
-const mainTabPage = asyncComponent(() => import('./pages/main-tab'));
+const Login = asyncComponent(() => import('./pages/Login'));
+const MainTabPage = asyncComponent(() => import('./pages/MainTab'));
 
 class App extends Component {
   render() {
     return (
         <Router>
           <Switch>
-            <Route exact path="/" component={login} />
-            <Route path="/login" component={login} />
-            <Route path="/index" component={mainTabPage} />
+            <Route exact path="/" component={Login} />
+            <Route path="/login" component={Login} />
+            <Route path="/index" component={MainTabPage} />
           </Switch>
         </Router>
     );

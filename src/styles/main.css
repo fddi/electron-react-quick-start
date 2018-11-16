@@ -74,8 +74,16 @@ html,body,#root{
   background: #ffffff;
   padding: 5px;
   margin: 18px;
-  min-height: 280px;
+  height: 100%;
   border-radius: 4px;
+}
+
+.tabs-page{
+  height: 100%;
+}
+
+.tabs-page .ant-tabs-content{
+  height: 95%;
 }
 
 .ant-card-body{
