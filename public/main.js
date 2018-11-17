@@ -1,19 +1,8 @@
 // Modules to control application life and create native browser window
 const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
-const ffi = require('ffi')
+const glob = require('glob')
 const path = require('path')
-const config = require('./config.json')
-
-global.shareObject={
-  config:config
-}
-
-iopath = path.join(__dirname, '/addon/test-ai32.dll');
-const testDll = ffi.Library(iopath, {
-  'HelloWorld': ['void', []]
-})
-testDll.HelloWorld()
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -66,3 +55,11 @@ app.on('activate', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+// Require each JS file in the app dir
+function loadApp () {
+  const files = glob.sync(path.join(__dirname, 'app/**/*.js'))
+  files.forEach((file) => { require(file) })
+}
+
+loadApp()

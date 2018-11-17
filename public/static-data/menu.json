@@ -44,7 +44,7 @@
                                    },
                                    {
                                         "menuId": 1212,
-                                        "menuName": "加载页面",
+                                        "menuName": "加载等待页面",
                                         "pageId": "/index/hold",
                                         "icon": "bars"
                                    }
