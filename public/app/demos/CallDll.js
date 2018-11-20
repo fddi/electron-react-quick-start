@@ -1,6 +1,6 @@
 const { ipcMain } = require('electron')
 const path = require('path')
-const ffi = require('ffi')
+const ffi = require('ffi-napi')
 
 ipcMain.on('call-dll-test', (event, arg) => {
     iopath = path.join(__dirname, '../../addon/test-ai32.dll');
