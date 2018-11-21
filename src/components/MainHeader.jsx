@@ -57,7 +57,7 @@ class HeaderView extends Component {
                          key="menu-header-1"
                          theme="dark"
                          mode="horizontal"
-                         style={{ float: "left", lineHeight: '64px' }}
+                         style={{ float: "left", lineHeight: '64px',minWidth:300 }}
                          onClick={(e) => { this.props.handleMenuTop(e) }}
                          selectedKeys={this.state.selectedKeys}
                          onSelect={(e) => { console.log(e); this.setState({ selectedKeys: e.selectedKeys }) }}

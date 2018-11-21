@@ -16,7 +16,7 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'
-      : `file://${path.join(__dirname, '../build/index.html')}`,
+      : `file://${path.join(__dirname, '/index.html')}`,
   )
 
   // Open the DevTools.
@@ -29,6 +29,8 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+  // const {dialog} = require('electron')
+  // dialog.showMessageBox({title:"path",message:process.cwd(),detail:process.cwd()})
 }
 
 // This method will be called when Electron has finished
@@ -57,7 +59,7 @@ app.on('activate', function () {
 // code. You can also put them in separate files and require them here.
 
 // Require each JS file in the app dir
-function loadApp () {
+function loadApp() {
   const files = glob.sync(path.join(__dirname, 'app/**/*.js'))
   files.forEach((file) => { require(file) })
 }

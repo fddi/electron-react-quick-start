@@ -3127,10 +3127,10 @@ electron-download@^4.1.0:
     semver "^5.4.1"
     sumchecker "^2.0.2"
 
-electron-is-dev@^0.3.0:
-  version "0.3.0"
-  resolved "http://registry.npm.taobao.org/electron-is-dev/download/electron-is-dev-0.3.0.tgz#14e6fda5c68e9e4ecbeff9ccf037cbd7c05c5afe"
-  integrity sha1-FOb9pcaOnk7L7/nM8DfL18BcWv4=
+electron-is-dev@^1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/electron-is-dev/download/electron-is-dev-1.0.1.tgz#6e0a184736fe7aea77d18210b0b0f6a02402c4bc"
+  integrity sha1-bgoYRzb+eup30YIQsLD2oCQCxLw=
 
 electron-osx-sign@0.4.11:
   version "0.4.11"
