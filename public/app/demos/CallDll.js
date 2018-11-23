@@ -3,7 +3,7 @@ const path = require('path')
 const ffi = require('ffi-napi')
 const isDev = require('electron-is-dev')
 
-ipcMain.on('call-dll-test', (event, arg) => {
+ipcMain.on('topic-call-dll', (event, arg) => {
     let ioPath = ""
     if (isDev) {
         ioPath = path.join(process.cwd(), '/addon/test-ai32.dll');
@@ -16,5 +16,5 @@ ipcMain.on('call-dll-test', (event, arg) => {
         'HelloWorld': ['void', []]
     })
     testDll.HelloWorld()
-    event.sender.send('call-dll-done', ioPath)
+    event.sender.send('topic-call-dll-done', ioPath)
 })

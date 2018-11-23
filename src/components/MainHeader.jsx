@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 import {
      Link
 } from 'react-router-dom';
-import { Menu, Icon } from 'antd';
+import { Menu, Icon,message } from 'antd';
 import "../styles/main.css";
 const { SubMenu } = Menu;
+const { ipcRenderer } = window.require('electron')
+
+ipcRenderer.on('topic-update-message', (event, msg) => {
+     message.success(msg)
+})
 
 class HeaderView extends Component {
      constructor(props) {
@@ -24,12 +29,17 @@ class HeaderView extends Component {
           }
      }
 
+     checkUpdate(){
+          ipcRenderer.send('topic-update-check')
+     }
+
      onMenuClick(e) {
           switch (parseInt(e.key)) {
                case 102:
                     this.props.linkToLogin();
                     break;
                default:
+                    this.checkUpdate()
                     return;
           }
      }
