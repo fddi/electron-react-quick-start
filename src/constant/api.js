@@ -1,5 +1,6 @@
-const config = window.require('electron').remote.require('./config.json')
-const host = config.host
+const config = window.require('electron').remote.getGlobal('appConfig').config
+const host = config.get("host")
+const localData = config.get("localData")
 const localApi = {
      login: "static-data/login.json",
      menuTree: "static-data/menu.json"
@@ -10,7 +11,7 @@ const remoteApi = {
 }
 export default {
      getApi: function () {
-          if (config.localData == 1) {
+          if (localData == 1) {
                return localApi
           }
           return remoteApi

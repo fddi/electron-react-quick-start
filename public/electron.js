@@ -3,6 +3,16 @@ const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
 const glob = require('glob')
 const path = require('path')
+let configPath = ""
+if (isDev) {
+  configPath = path.join(process.cwd(), '/addon/config.json');
+} else {
+  configPath = path.join(process.cwd(), 'resources/addon/config.json');
+}
+const nconf = require('nconf').file(configPath)
+global.appConfig = {
+  config: nconf
+}
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

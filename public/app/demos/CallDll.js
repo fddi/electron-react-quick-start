@@ -11,7 +11,7 @@ ipcMain.on('topic-call-dll', (event, arg) => {
         ioPath = path.join(process.cwd(), 'resources/addon/test-ai32.dll');
     }
     const { dialog } = require('electron')
-    dialog.showMessageBox({ title: "路径", message: ioPath, detail: ioPath })
+    dialog.showMessageBox({ title: "调用路径", message: ioPath, detail: ioPath })
     const testDll = ffi.Library(ioPath, {
         'HelloWorld': ['void', []]
     })

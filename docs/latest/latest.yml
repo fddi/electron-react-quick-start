@@ -1,8 +1,8 @@
 version: 0.1.1
 files:
   - url: electron-react-quick-start-setup-0.1.1.exe
-    sha512: kwx+Jl4qjbHEEABoKHcrsGhLRNMU1OfmcaCrYT1CfcfxAi9azb/epS9Hp6QUa1l9XF0XtwuF4QOTeVM4oxDIaw==
-    size: 55841840
+    sha512: kalBZLfd1+zXHfMzKAISakilKga/ncpQLn5KJL9/XsPYhyh8IN14Mt2OxbuUUatNvJ3A0M1Xiem4i169Zdu+/A==
+    size: 55773192
 path: electron-react-quick-start-setup-0.1.1.exe
-sha512: kwx+Jl4qjbHEEABoKHcrsGhLRNMU1OfmcaCrYT1CfcfxAi9azb/epS9Hp6QUa1l9XF0XtwuF4QOTeVM4oxDIaw==
-releaseDate: '2018-11-23T07:44:37.091Z'
+sha512: kalBZLfd1+zXHfMzKAISakilKga/ncpQLn5KJL9/XsPYhyh8IN14Mt2OxbuUUatNvJ3A0M1Xiem4i169Zdu+/A==
+releaseDate: '2018-11-26T09:51:02.864Z'

@@ -1,0 +1,4 @@
+owner: fddi
+repo: electron-react-quick-start
+provider: github
+updaterCacheDirName: electron-react-quick-start-updater
