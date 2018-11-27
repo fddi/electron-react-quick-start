@@ -47,6 +47,12 @@
       "output": "dist"
     },
     "appId": "electron-react-quick-start",
+    "publish":[
+      {
+        "provider": "generic",
+        "url":"http://localhost:8008/download/electron-react-qs"
+      }
+    ],
     "win": {
       "target": [
         "nsis",

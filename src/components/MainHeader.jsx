@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import {
-     Link
-} from 'react-router-dom';
 import { Menu, Icon, message, Modal, Progress } from 'antd';
 import "../styles/main.css";
 import Common from '../constant/common'
