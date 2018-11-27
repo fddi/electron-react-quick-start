@@ -1,4 +1,4 @@
-## [English](README.md)
+## [English](README-en.md)
 react + electron + ant 的脚手架项目。
 
 项目基于[Create React App](https://github.com/facebookincubator/create-react-app).
