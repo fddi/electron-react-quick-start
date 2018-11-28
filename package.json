@@ -47,10 +47,10 @@
       "output": "dist"
     },
     "appId": "electron-react-quick-start",
-    "publish":[
+    "publish": [
       {
         "provider": "generic",
-        "url":"http://localhost:8008/download/electron-react-qs"
+        "url": "http://localhost:8008/download/electron-react-qs"
       }
     ],
     "win": {

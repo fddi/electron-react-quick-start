@@ -6,6 +6,7 @@ react + electron + ant 的脚手架项目。
 ## 快速开始
 
 需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (默认安装[npm]http://npmjs.com)。
+windows下编译调用外部函数，需要安装安装.netframwork4.7以上版本。
 
 打开命令窗口:
 ```bash
@@ -13,6 +14,10 @@ react + electron + ant 的脚手架项目。
 git clone https://github.com/fddi/electron-react-quick-start
 # 转到项目目录
 cd electron-react-quick-start
+# 额外需要安装和设置的工具
+npm  --vs2015  install --global windows-build-tools
+# 设置vs 版本
+npm config set msvs_version 2015 --global
 # 安装
 npm install
 # 运行
