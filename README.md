@@ -6,7 +6,7 @@ react + electron + ant 的脚手架项目。
 ## 快速开始
 
 需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (默认安装[npm]http://npmjs.com)。
-windows下编译调用外部函数，需要安装安装.netframwork4.7以上版本。
+windows下编译调用外部函数，需要安装.netframwork4.7以上版本。
 
 打开命令窗口:
 ```bash
