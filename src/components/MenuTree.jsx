@@ -10,7 +10,7 @@ export default class MenuTree extends Component {
           const keys = [];
           menus = props.menus;
           menus.map((item, index) => {
-               keys.push(item.menuId+"");
+               keys.push(item.menuId + "");
           });
           const openKeys = props.collapsed ? [] : keys;
           this.state = {
@@ -20,8 +20,11 @@ export default class MenuTree extends Component {
 
      componentWillReceiveProps(props) {
           const keys = [];
+          if (props.menus == null) {
+               return;
+          }
           props.menus.map((item, index) => {
-               keys.push(item.menuId+"");
+               keys.push(item.menuId + "");
           });
           if (props.collapsed) {
                this.setState({ openKeys: [] });
@@ -35,7 +38,7 @@ export default class MenuTree extends Component {
 
      getItems(menus) {
           const items = [];
-          for (var i = 0; i < menus.length; i++) {
+          for (var i = 0; menus != null && i < menus.length; i++) {
                items.push(this.getNode(menus[i]));
           }
           return items;

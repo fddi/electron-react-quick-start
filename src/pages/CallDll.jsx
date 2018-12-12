@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Card, Button,message } from 'antd';
 const { ipcRenderer } = window.require('electron')
 
-ipcRenderer.on('call-dll-done', (event, path) => {
+ipcRenderer.on('topic-call-dll-done', (event, path) => {
      const msg = `调用: ${path} 成功！`
      message.success(msg)
 })

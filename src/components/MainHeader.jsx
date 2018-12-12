@@ -118,8 +118,8 @@ class HeaderView extends Component {
                          selectable={false}
                     >
                          <SubMenu key="header-sm-1" title={<span><Icon type="user" />{this.state.userName}</span>}>
-                              <Menu.Item key="101"><Icon type="logout" />系统更新</Menu.Item>
-                              <Menu.Item key="102"><Icon type="logout" />退出登录</Menu.Item>
+                              <Menu.Item key="101"><Icon type="cloud-download" />系统更新</Menu.Item>
+                              <Menu.Item key="102"><Icon type="poweroff" />退出登录</Menu.Item>
                          </SubMenu>
                     </Menu>
                     <Modal

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Redirect, Link
+    Redirect
 } from 'react-router-dom';
 import { Layout, Spin, Tabs } from 'antd';
 import Loadable from 'react-loadable'
@@ -180,13 +180,11 @@ export default class MainTab extends Component {
                     onCollapse={(collapsed) => { this.onCollapse(collapsed) }}
                     id="menu_sider"
                 >
-                    <Link to="/index/console">
-                        <div className="logo">
-                            <h1>
-                                {Common.APPNMAE}
-                            </h1>
-                        </div>
-                    </Link>
+                    <div className="logo">
+                        <h1>
+                            {Common.APPNMAE}
+                        </h1>
+                    </div>
                     <MenuTree handleTabPage={this.handleTabPage.bind(this)} mode={this.state.mode}
                         menus={this.state.menuTree} collapsed={this.state.collapsed} />
                 </Sider>
