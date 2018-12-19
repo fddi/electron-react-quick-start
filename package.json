@@ -1,6 +1,6 @@
 {
   "name": "electron-react-quick-start",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "public/electron.js",
   "homepage": "./",
   "dependencies": {
@@ -60,8 +60,19 @@
       ]
     },
     "nsis": {
-      "oneClick": false
+      "oneClick": false,
+      "perMachine": true,
+      "createDesktopShortcut": "always",
+      "createStartMenuShortcut": true,
+      "allowToChangeInstallationDirectory": true
     },
-    "extraResources": "addon"
+    "extraResources": [],
+    "extraFiles": [
+      "addon",
+      {
+        "from": "config.json",
+        "to": "config.json"
+      }
+    ]
   }
 }

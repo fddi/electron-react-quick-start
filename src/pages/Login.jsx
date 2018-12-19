@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 import {
   Redirect
 } from 'react-router-dom'
-import { Button, Row, Form, Input, Spin, Alert } from 'antd'
+import { Button, Row, Form, Input, Spin, Alert,message } from 'antd'
 import '../styles/login.css'
 import Common from '../constant/common'
 import Api from '../constant/api'
 import Fetch from '../utils/Fetch'
 
-const {Menu} = window.require('electron').remote
+// const {Menu} = window.require('electron').remote
 //Menu.setApplicationMenu(null)
 
 const FormItem = Form.Item;
@@ -22,7 +22,7 @@ class Login extends Component {
       errorMsg: "",
       errorShow: false,
       linkToIndex: linkToIndex
-    };
+    }
   }
 
   handleSubmit(e) {

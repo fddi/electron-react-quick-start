@@ -1,14 +1,8 @@
-const { app,ipcMain } = require('electron')
+const { app, ipcMain } = require('electron')
 const path = require('path')
 const ffi = require('ffi-napi')
-const isDev = require('electron-is-dev')
-let ioPath = ""
-if (isDev) {
-    ioPath = path.join(app.getAppPath(), '/addon/test-ai32.dll');
-} else {
-    ioPath = path.join(app.getAppPath(), 'resources/addon/test-ai32.dll');
-}
-console.log(ioPath)
+const ioPath = path.resolve('addon/test-ai32.dll')
+
 ipcMain.on('topic-call-dll', (event, arg) => {
     // const { dialog } = require('electron')
     // dialog.showMessageBox({ title: "调用路径", message: ioPath, detail: ioPath })

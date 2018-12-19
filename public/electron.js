@@ -3,16 +3,13 @@ const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
 const glob = require('glob')
 const path = require('path')
-let configPath = ""
-if (isDev) {
-  configPath = path.join(process.cwd(), '/addon/config.json');
-} else {
-  configPath = path.join(process.cwd(), 'resources/addon/config.json');
-}
+const logger = require('./main-process/modules/logger.js')
+const configPath = path.resolve('config.json')
 const nconf = require('nconf').file(configPath)
 global.appConfig = {
   config: nconf
 }
+logger.info(`读取配置文件：${configPath}`)
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -39,8 +36,8 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-  // const {dialog} = require('electron')
-  // dialog.showMessageBox({title:"path",message:process.cwd(),detail:process.cwd()})
+  // const { dialog } = require('electron')
+  // dialog.showMessageBox({ title: "调用配置路径", message: configPath, detail: configPath })
 }
 
 // This method will be called when Electron has finished
@@ -70,7 +67,7 @@ app.on('activate', function () {
 
 // Require each JS file in the app dir
 function loadApp() {
-  const files = glob.sync(path.join(__dirname, 'app/**/*.js'))
+  const files = glob.sync(path.join(__dirname, 'main-process/app/**/*.js'))
   files.forEach((file) => { require(file) })
 }
 
