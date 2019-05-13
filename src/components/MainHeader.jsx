@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Menu, Icon, message, Modal, Progress } from 'antd';
 import "../styles/main.css";
-import Common from '../constant/common'
+import Constant from '../common/Constant'
 const { SubMenu } = Menu;
 const { ipcRenderer } = window.require('electron')
 
@@ -23,27 +23,27 @@ class HeaderView extends Component {
                switch (msgCode) {
                     case 502:
                          message.destroy()
-                         message.error(Common.message.updateError)
+                         message.error(Constant.message.updateError)
                          this.setState({ downLoadStatus: false, visible: false })
                          break
                     case 0:
                          message.destroy()
-                         message.info(Common.message.updateIsNew)
+                         message.info(Constant.message.updateIsNew)
                          break
                     case 1:
                          message.destroy()
                          this.setState({ downLoadStatus: true, visible: true })
                }
           })
-          ipcRenderer.on('topic-update-loading',(event, progressObj) => {
-               if(this.state.downLoadStatus){
-                    this.setState({percent:progressObj.percent})
+          ipcRenderer.on('topic-update-loading', (event, progressObj) => {
+               if (this.state.downLoadStatus) {
+                    this.setState({ percent: progressObj.percent })
                }
           })
      }
 
-     componentWillUnmount(){
-          ipcRenderer.removeAllListeners("topic-update-message")
+     componentWillUnmount() {
+          ipcRenderer.removeAllListeners("topic-update-step")
           ipcRenderer.removeAllListeners("topic-update-loading")
      }
 
@@ -59,19 +59,38 @@ class HeaderView extends Component {
           if (this.state.downLoadStatus) {
                this.setState({ visible: true })
           } else {
-               message.loading(Common.message.updateCheck, 0)
+               message.loading(Constant.message.updateCheck, 0)
                ipcRenderer.send('topic-update-check')
           }
      }
 
-     onMenuClick(e) {
+     handleMenuClick(e) {
           switch (parseInt(e.key)) {
+               case 101:
+                    this.checkUpdate()
+                    this.setState({ selectedKeys: [] })
+                    break;
                case 102:
                     this.props.linkToLogin();
+                    this.setState({ selectedKeys: [] })
                     break;
                default:
-                    this.checkUpdate()
-                    return;
+                    this.props.handleMenuTop(e)
+                    break;
+          }
+     }
+
+     handleMenuSelect(e) {
+          switch (parseInt(e.key)) {
+               case 101:
+                    this.setState({ selectedKeys: [] })
+                    break;
+               case 102:
+                    this.setState({ selectedKeys: [] })
+                    break;
+               default:
+                    this.setState({ selectedKeys: e.selectedKeys })
+                    break;
           }
      }
 
@@ -100,26 +119,21 @@ class HeaderView extends Component {
                <div>
                     <Menu
                          key="menu-header-1"
-                         theme="dark"
+                         theme="light"
                          mode="horizontal"
-                         style={{ float: "left", lineHeight: '64px', minWidth: 300 }}
-                         onClick={(e) => { this.props.handleMenuTop(e) }}
+                         style={{ lineHeight: '65px' }}
+                         onClick={(e) => { this.handleMenuClick(e) }}
                          selectedKeys={this.state.selectedKeys}
-                         onSelect={(e) => { console.log(e); this.setState({ selectedKeys: e.selectedKeys }) }}
+                         onSelect={(e) => { this.handleMenuSelect(e) }}
                     >
                          {this.buildItems(this.state.menus)}
-                    </Menu>
-                    <Menu
-                         key="menu-header-2"
-                         theme="dark"
-                         mode="horizontal"
-                         style={{ float: 'right', lineHeight: '64px', marginRight: 10 }}
-                         onClick={(e) => { this.onMenuClick(e) }}
-                         selectable={false}
-                    >
-                         <SubMenu key="header-sm-1" title={<span><Icon type="user" />{this.state.userName}</span>}>
+                         <SubMenu key="header-sm-1" style={{ float: 'right' }}
+                              title={<span><Icon type="user" />{this.state.userName}</span>}>
                               <Menu.Item key="101"><Icon type="cloud-download" />系统更新</Menu.Item>
                               <Menu.Item key="102"><Icon type="poweroff" />退出登录</Menu.Item>
+                         </SubMenu>
+                         <SubMenu key="header-sm-2" style={{ float: 'right' }}
+                              title={<span><Icon type="message" /></span>}>
                          </SubMenu>
                     </Menu>
                     <Modal

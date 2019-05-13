@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Button,message } from 'antd';
-const { ipcRenderer } = window.require('electron')
+import { Card, Button, message } from 'antd';
+const { remote } = window.require('electron')
 
-ipcRenderer.on('topic-call-dll-done', (event, path) => {
-     const msg = `调用: ${path} 成功！`
-     message.success(msg)
-})
-
-export default class Workbench extends Component {
+export default class DllTest extends Component {
      constructor(props) {
           super(props);
           this.state = {
@@ -19,7 +14,23 @@ export default class Workbench extends Component {
      }
 
      handleCallDll() {
-          ipcRenderer.send('topic-call-dll')
+          const callTestDll = remote.require("./main-process/modules/CallTestDll.js")
+          const v = callTestDll.call(true)
+          console.log(v)
+          if (v) {
+               message.info(v.result)
+          }
+     }
+
+     handleCallDllAsync() {
+          const callTestDll = remote.require("./main-process/modules/CallTestDll.js")
+          const result = callTestDll.call(false, (v) => {
+               console.log(v)
+               if (v) {
+                    message.info(v.result)
+               }
+          })
+
      }
 
      render() {
@@ -34,10 +45,10 @@ export default class Workbench extends Component {
                     </pre>
 
                     <pre style={{ background: "#ececec", padding: 5 }}>
-                        测试时 /publc/addon 下test-ai32.dll 需要nodejs为32位。 <br />
+                         测试时 /publc/addon 下test-ai32.dll 需要nodejs为32位。 <br />
                     </pre>
-                    <Button type="primary" icon="thunderbolt"
-                         size="large" onClick={this.handleCallDll}>调用dll函数</Button>
+                    <Button type="primary" icon="thunderbolt" onClick={this.handleCallDll}>同步调用dll函数</Button>
+                    <Button type="primary" icon="thunderbolt" style={{ marginLeft: 5 }} onClick={this.handleCallDllAsync}>异步调用dll函数</Button>
                </Card>
           );
      }

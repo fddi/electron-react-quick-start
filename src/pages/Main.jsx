@@ -4,10 +4,10 @@ import {
 } from 'react-router-dom';
 import { Layout, Spin, Tabs } from 'antd';
 import Loadable from 'react-loadable'
-import Common from '../constant/common'
+import Constant from '../common/Constant'
 import StringTool from '../utils/StringTool'
 import Fetch from '../utils/Fetch'
-import Api from '../constant/api'
+import Api from '../common/Api'
 import "../styles/main.css"
 import MenuTree from '../components/MenuTree'
 import MainHeader from '../components/MainHeader'
@@ -171,7 +171,7 @@ export default class MainTab extends Component {
         if (this.state.linkToLogin) {
             return (<Redirect to="/login" />);
         }
-        return (<Spin wrapperClassName="main-spin" spinning={this.state.loading} tip={Common.message.pageLoading}>
+        return (<Spin wrapperClassName="main-spin" spinning={this.state.loading} tip={Constant.message.pageLoading}>
             <Layout>
                 <Sider
                     className="main-sider"
@@ -182,7 +182,7 @@ export default class MainTab extends Component {
                 >
                     <div className="logo">
                         <h1>
-                            {Common.APPNMAE}
+                            {Constant.APPNMAE}
                         </h1>
                     </div>
                     <MenuTree handleTabPage={this.handleTabPage.bind(this)} mode={this.state.mode}

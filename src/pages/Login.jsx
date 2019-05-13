@@ -4,8 +4,8 @@ import {
 } from 'react-router-dom'
 import { Button, Row, Form, Input, Spin, Alert,message } from 'antd'
 import '../styles/login.css'
-import Common from '../constant/common'
-import Api from '../constant/api'
+import Constant from '../common/Constant'
+import Api from '../common/Api'
 import Fetch from '../utils/Fetch'
 
 // const {Menu} = window.require('electron').remote
@@ -39,7 +39,7 @@ class Login extends Component {
           } else if (result) {
             this.setState({ loading: false, errorShow: true, errorMsg: result.resultMsg });
           } else {
-            this.setState({ loading: false, errorShow: true, errorMsg: Common.message.errorNetwork });
+            this.setState({ loading: false, errorShow: true, errorMsg: Constant.message.errorNetwork });
           }
         });
       }
@@ -63,10 +63,10 @@ class Login extends Component {
       <div className="login-div">
         <div className="login-main">
           <div className="logo">
-            <span>{Common.APPNMAE}</span>
+            <span>{Constant.APPNMAE}</span>
           </div>
           <div className="form">
-            <Spin spinning={this.state.loading} tip={Common.message.infoLoading}>
+            <Spin spinning={this.state.loading} tip={Constant.message.infoLoading}>
               <form onSubmit={(e) => { this.handleSubmit(e) }} style={{ padding: 36 }}>
                 <FormItem hasFeedback>
                   {getFieldDecorator('username', {
@@ -75,7 +75,7 @@ class Login extends Component {
                       {
                         required: true,
                         pattern:/^[A-Za-z0-9]{4,16}/,
-                        message: Common.message.alertRequireUsername
+                        message: Constant.message.alertRequireUsername
                       },
                     ],
                   })(<Input autoFocus size="large" placeholder="用户名" onPressEnter={this.handlePressEnter} />)}
@@ -85,7 +85,7 @@ class Login extends Component {
                     rules: [
                       {
                         required: true,
-                        message: Common.message.alertRequirePwd
+                        message: Constant.message.alertRequirePwd
                       },
                     ]
                   })(<Input ref={(input) => { this.inputRef = input }} size="large" type="password" placeholder="密码" />)}

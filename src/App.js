@@ -11,7 +11,7 @@ import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
 const Login = asyncComponent(() => import('./pages/Login'));
-const MainTabPage = asyncComponent(() => import('./pages/MainTab'));
+const MainTabPage = asyncComponent(() => import('./pages/Main'));
 class App extends Component {
   render() {
     return (

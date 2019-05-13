@@ -1,5 +1,5 @@
 import { Modal, message } from 'antd';
-import Common from "../constant/common";
+import Constant from "../common/Constant";
 
 export const toQueryString = function (obj) {
   return obj ? Object.keys(obj).sort().map(function (key) {
@@ -61,7 +61,7 @@ export default {
           exceptionShow(result);
           callback && callback(false);
         } else if (result && "5012" == result.resultCode) {
-          message.error(Common.message.accessTimeout);
+          message.error(Constant.message.accessTimeout);
           window.location.href = "/login";
           sessionStorage.setItem("tokenInfo", "");
         } else {
@@ -70,7 +70,7 @@ export default {
       })
       .catch((err) => {
         console.log(err);
-        message.error(Common.message.errorNetwork);
+        message.error(Constant.message.errorNetwork);
         callback && callback(false);
       });
   },
@@ -91,7 +91,7 @@ export default {
           exceptionShow(result);
           callback && callback(false);
         } else if (result && "5012" == result.resultCode) {
-          message.error(Common.message.accessTimeout);
+          message.error(Constant.message.accessTimeout);
           window.location.href = "/login";
           sessionStorage.setItem("tokenInfo", "");
         } else {
@@ -100,7 +100,7 @@ export default {
       })
       .catch((err) => {
         console.log(err);
-        message.error(Common.message.errorNetwork);
+        message.error(Constant.message.errorNetwork);
         callback && callback(false);
       });
   }
