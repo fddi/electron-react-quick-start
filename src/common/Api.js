@@ -1,4 +1,4 @@
-const config = window.require('electron').remote.getGlobal('appConfig').config
+const config = window.require('electron').remote.getGlobal('appConfig')
 const host = config.get("host")
 const localData = config.get("localData")
 const localApi = {

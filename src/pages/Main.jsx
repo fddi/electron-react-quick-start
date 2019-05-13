@@ -12,9 +12,9 @@ import "../styles/main.css"
 import MenuTree from '../components/MenuTree'
 import MainHeader from '../components/MainHeader'
 import Workbench from './Workbench'
-import Hold from '../pages/Hold'
-import Page404 from '../pages/404'
-import Routes from '../constant/routes'
+import Hold from './Hold'
+import Page404 from './404'
+import Routes from '../routes/RouteIndex'
 
 const TabPane = Tabs.TabPane;
 const electron = window.require('electron');

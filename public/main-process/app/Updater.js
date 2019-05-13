@@ -1,6 +1,6 @@
 const { ipcMain } = require('electron')
 const { autoUpdater } = require('electron-updater')
-const updateUrl=global.appConfig.config.get("updateUrl")
+const updateUrl=global.appConfig.get("updateUrl")
 
 // 检测更新
 function updateHandle(event) {

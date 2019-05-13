@@ -6,10 +6,13 @@ const path = require('path')
 const logger = require('./main-process/modules/logger.js')
 const configPath = path.resolve('config.json')
 const nconf = require('nconf').file(configPath)
-global.appConfig = {
-  config: nconf
-}
-logger.info(`读取配置文件：${configPath}`)
+global.appConfig = nconf
+
+// 加载ppeper插件
+// app.commandLine.appendSwitch('allow-all-activex')
+// app.commandLine.appendSwitch('enable-npapi')
+// const emrPath = path.resolve('addon/TestPpapi.dll')
+// app.commandLine.appendSwitch('register-pepper-plugins', `${emrPath};application/x-hello`)
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -17,7 +20,14 @@ let mainWindow
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ minWidth: 450, width: 450, height: 500 })
+  mainWindow = new BrowserWindow({
+    width: 1440, height: 900,
+    webPreferences: {
+      nodeIntegrationInWorker: true,
+      plugins: true,
+      webSecurity: false
+    }
+  })
 
   // and load the index.html of the app.
   mainWindow.loadURL(
@@ -26,6 +36,7 @@ function createWindow() {
       : `file://${path.join(__dirname, '/index.html')}`,
   )
 
+  mainWindow.maximize()
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
@@ -36,8 +47,27 @@ function createWindow() {
     // when you should delete the corresponding element.
     mainWindow = null
   })
-  // const { dialog } = require('electron')
-  // dialog.showMessageBox({ title: "调用配置路径", message: configPath, detail: configPath })
+
+  mainWindow.on('close', function (e) {
+    //窗口关闭前事件
+    //如要取消，执行e.preventDefault()
+  })
+
+  mainWindow.on('responsive', () => {
+    logger.info("窗口恢复响应：" + new Date().getTime())
+  })
+
+  mainWindow.on('unresponsive', () => {
+    logger.info("窗口失去响应：" + new Date().getTime())
+  })
+
+  mainWindow.webContents.on('plugin-crashed', () => {
+    logger.info("插件进程崩溃：" + new Date().getTime())
+  })
+
+  mainWindow.webContents.on("did-fail-load", (event, errorCode, validatedURL) => {
+    logger.error(`加载url失败code[${errorCode}]：${mainWindow.webContents.getURL()}`)
+  })
 }
 
 // This method will be called when Electron has finished
