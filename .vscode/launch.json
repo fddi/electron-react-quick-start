@@ -5,10 +5,15 @@
      "version": "0.2.0",
      "configurations": [
           {
+               "name": "启动程序",
                "type": "node",
                "request": "launch",
-               "name": "启动程序",
-               "program": "${workspaceFolder}\\public\\main.js"
+               "cwd": "${workspaceRoot}",
+               "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
+               "windows": {
+                    "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"  
+               },
+               "args": ["."]
           }
      ]
 }
