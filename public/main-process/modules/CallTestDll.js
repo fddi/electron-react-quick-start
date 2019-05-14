@@ -6,14 +6,14 @@ const callTestDll = (sync) => {
      const childPath = path.join(__dirname, '../../child-process/TestDllWorker.js')
      let result = null
      if (sync) {
-          const spanw = child_process.spawnSync(process.argv[0], [childPath])
+          const spanw = child_process.spawnSync(process.argv[0], [childPath, "test"])
           const str = Buffer.from(spanw.stdout)
           result = iconv.decode(str, 'GBK')
           console.log(`stdout: ${result}`)
           return result
      }
      return new Promise((resolve, reject) => {
-          const spanw = child_process.spawn(process.argv[0], [childPath])
+          const spanw = child_process.spawn(process.argv[0], [childPath, "test"])
           spanw.stdout.on('data', (data) => {
                const str = Buffer.from(data)
                const result = iconv.decode(str, 'GBK')
