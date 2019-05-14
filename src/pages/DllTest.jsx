@@ -16,18 +16,18 @@ export default class DllTest extends Component {
      handleCallDll() {
           const callTestDll = remote.require("./main-process/modules/CallTestDll.js")
           const v = callTestDll.call(true)
-          console.log(v)
           if (v) {
-               message.info(v.result)
+               const result = JSON.parse(v)
+               message.info(result.resultMsg)
           }
      }
 
      handleCallDllAsync() {
           const callTestDll = remote.require("./main-process/modules/CallTestDll.js")
-          const result = callTestDll.call(false, (v) => {
-               console.log(v)
+          callTestDll.call(false, (v) => {
                if (v) {
-                    message.info(v.result)
+                    const result = JSON.parse(v)
+                    message.info(result.resultMsg)
                }
           })
 

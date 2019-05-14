@@ -1,5 +1,5 @@
 export default {
-    APPNMAE: "Electron + React Demo",
+    APPNMAE: "Start Demo",
     message: {
         accessTimeout: "访问超时",
         errorNetwork: "网络访问异常",
@@ -9,6 +9,7 @@ export default {
         pageLoading: "初始化界面...",
         updateCheck:"检查新版本...",
         updateIsNew:"当前版本是最新版本",
-        updateError:"检查版本出错"
+        updateError:"检查版本出错",
+        loadFail:"404  访问的页面不存在"
     }
 }

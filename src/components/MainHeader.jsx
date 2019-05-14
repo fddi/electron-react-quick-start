@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Menu, Icon, message, Modal, Progress } from 'antd';
-import "../styles/main.css";
+import { Menu, Icon, message, Modal, Progress, Badge, Popover } from 'antd';
 import Constant from '../common/Constant'
 const { SubMenu } = Menu;
 const { ipcRenderer } = window.require('electron')
@@ -74,6 +73,8 @@ class HeaderView extends Component {
                     this.props.linkToLogin();
                     this.setState({ selectedKeys: [] })
                     break;
+               case 103:
+                    break;
                default:
                     this.props.handleMenuTop(e)
                     break;
@@ -86,6 +87,9 @@ class HeaderView extends Component {
                     this.setState({ selectedKeys: [] })
                     break;
                case 102:
+                    this.setState({ selectedKeys: [] })
+                    break;
+               case 103:
                     this.setState({ selectedKeys: [] })
                     break;
                default:
@@ -115,6 +119,8 @@ class HeaderView extends Component {
      }
 
      render() {
+          const text = <span>消息(3)</span>
+          const content = (<div><p>消息内容</p></div>)
           return (
                <div>
                     <Menu
@@ -132,9 +138,13 @@ class HeaderView extends Component {
                               <Menu.Item key="101"><Icon type="cloud-download" />系统更新</Menu.Item>
                               <Menu.Item key="102"><Icon type="poweroff" />退出登录</Menu.Item>
                          </SubMenu>
-                         <SubMenu key="header-sm-2" style={{ float: 'right' }}
-                              title={<span><Icon type="message" /></span>}>
-                         </SubMenu>
+                         <Menu.Item style={{ float: 'right' }} key="103">
+                              <Popover placement="bottom" title={text} content={content} trigger="click">
+                                   <Badge count={9}>
+                                        <Icon type="message" />
+                                   </Badge>
+                              </Popover>
+                         </Menu.Item>
                     </Menu>
                     <Modal
                          visible={this.state.visible}

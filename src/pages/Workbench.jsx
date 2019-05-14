@@ -3,7 +3,7 @@ import { Row, Col, Card } from 'antd';
 import logoReact from '../assets/react.svg'
 import logoElectron from '../assets/electron256.png'
 import LogoAnt from '../assets/antdesign.svg'
-const {shell} = window.require('electron');
+const {shell} = window.require('electron')
 const colStyle = {
      borderRadius: "4px",
      textAlign: "center"

@@ -3,7 +3,6 @@ html,body,#root{
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: "Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;
 }
 
 .main-spin{
@@ -41,11 +40,11 @@ html,body,#root{
 #menu_sider .logo img{
   margin-left: 10px;
   margin-right: 5px;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
 }
 #menu_sider .logo h1{
-  line-height: 30px;
+  line-height: 32px;
   font-size: 16px;
   color: #ffffff;
   vertical-align:middle;
@@ -88,98 +87,4 @@ html,body,#root{
 
 .ant-card-body{
   padding: 15px;
-}
-
-.editable-cell {
-  position: relative;
-}
-
-.editable-cell-input-wrapper,
-.editable-cell-text-wrapper {
-  padding-right: 40px;
-}
-
-.editable-cell-icon,
-.editable-cell-icon-check {
-  position: absolute;
-  right: 0;
-  width: 30px;
-  cursor: pointer;
-}
-
-.editable-cell-icon {
-  display: inline-block;
-}
-
-.editable-cell-icon-check {
-  line-height: 32px;
-}
-
-.editable-cell-icon:hover,
-.editable-cell-icon-check:hover {
-  color: #108ee9;
-}
-
-.editable-add-btn {
-  margin-bottom: 8px;
-}
-
-.tab-content{
-  min-height: 400px;
-}
-
-.home-wrapper{
-  margin-top:10px;
-}
-
-.home-editor{
-  border: 1px solid #e0e0e0;
-  padding: 5px;
-  height: 300px;
-  border-radius: 2px;
-}
-
-.query-input{
-  width: 150px;
-  margin:2px;
-}
-
-.redRow{
-  background: #FF6666;
-}
-
-.upload-img .ant-upload.ant-upload-select-picture-card{
-  background-color: #108ee9;
-  color: #fff;
-}
-.upload-img .ant-upload-select-picture-card .anticon{
-  font-size:2em;
-}
-
-.pswp__share-tooltip a.pswp__share--facebook{
-  display: none;
-}
-.pswp__share-tooltip a.pswp__share--twitter{
-  display: none;
-}
-.pswp__share-tooltip a.pswp__share--pinterest{
-  display: none;
-}
-
-.row-form{
- border: 1px solid #ccc;
- border-bottom: none;
-}
-
-.cell-form{
- border-right: 1px solid #ccc;
- padding:5px;
-}
-
-.row-form-bottom{
-   border-bottom:1px solid #ccc;
-}
-
-.cell-form-end{
-   border-right:none;
 }

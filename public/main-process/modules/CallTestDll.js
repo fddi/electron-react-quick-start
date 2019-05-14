@@ -1,31 +1,38 @@
 const path = require('path')
 const child_process = require('child_process')
+const iconv = require('iconv-lite')
 
 const callTestDll = (sync) => {
+     const childPath = path.join(__dirname, '../../child-process/TestDllWorker.js')
+     let result = null
+     if (sync) {
+          const spanw = child_process.spawnSync(process.argv[0], [childPath])
+          const str = Buffer.from(spanw.stdout)
+          result = iconv.decode(str, 'GBK')
+          console.log(`stdout: ${result}`)
+          return result
+     }
      return new Promise((resolve, reject) => {
-          const childPath = path.join(__dirname, '../../child-process/TestDllWorker.js')
-          processChild = child_process.fork(childPath, {
-               silent: false
-          })
-          //向子线程发送数据
-          processChild.send({ param: "test" })
-          //接收子线程数据
-          processChild.on('message', (msg) => {
-               resolve(msg)
-          })
+          const spanw = child_process.spawn(process.argv[0], [childPath])
+          spanw.stdout.on('data', (data) => {
+               const str = Buffer.from(data)
+               const result = iconv.decode(str, 'GBK')
+               console.log(`stdout: ${result}`);
+               if (result.indexOf("result") >= 0) {
+                    resolve(result)
+               }
+          });
      })
 }
 
 module.exports = {
      call: function (sync, callback) {
-          let anyscCall = async function (sync) {
-               return await callTestDll(sync)
-          }
           if (sync) {
-               // const result = child_process.spawnSync("node", ["./child-process/TestDllSyncWorker.js"]);
-               //  result = child_process.spawnSync("node", [childPath], { argv0: "test" });
-               // return result
+               return callTestDll(sync)
           } else {
+               let anyscCall = async function (sync) {
+                    return await callTestDll(sync)
+               }
                anyscCall(sync).then((v) => { callback(v) })
           }
      }

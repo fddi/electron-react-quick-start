@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Icon } from 'antd';
+import { Layout } from 'antd'
+import Icon404 from '../assets/404.svg'
+import Constant from '../common/Constant'
 
 export default class Redirect404 extends Component {
      constructor(props) {
@@ -11,15 +13,14 @@ export default class Redirect404 extends Component {
 
      render() {
           return (
-               <div style={{
-                    paddingTop: 50, width: "100%", height: "100%",
-                    backgroundColor: "#ececec", textAlign: "center"
-               }}
-               >
-                    <Icon type="frown" theme="twoTone" style={{ fontSize: 180 }}
-                         twoToneColor="#1DA57A" />
-                    <h1 style={{color:"#1DA57A"}}>访问的网页不存在</h1>
-               </div>
+               <Layout style={{ width: "100%", height: "100%" }}>
+                    <Layout.Content style={{ paddingTop: 100, textAlign: "center", height: "100%" }}>
+                         <img alt="" src={Icon404} />
+                         <br />
+                         <br />
+                         <p style={{ fontSize: 20, fontWeight: "bold" }}>{Constant.message.loadFail}</p>
+                    </Layout.Content>
+               </Layout>
           );
      }
 }

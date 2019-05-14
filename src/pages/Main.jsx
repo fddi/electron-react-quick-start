@@ -8,13 +8,14 @@ import Constant from '../common/Constant'
 import StringTool from '../utils/StringTool'
 import Fetch from '../utils/Fetch'
 import Api from '../common/Api'
-import "../styles/main.css"
 import MenuTree from '../components/MenuTree'
 import MainHeader from '../components/MainHeader'
 import Workbench from './Workbench'
 import Hold from './Hold'
 import Page404 from './404'
 import Routes from '../routes/RouteIndex'
+import logo from '../assets/electron256.png'
+import '../styles/main.css'
 
 const TabPane = Tabs.TabPane;
 const electron = window.require('electron');
@@ -164,7 +165,8 @@ export default class MainTab extends Component {
                 newPages.push(item);
             }
         });
-        this.setState({ pages: newPages, activeKey: "tab-main-default" });
+        let activeKey = this.state.activeKey == targetKey ? "tab-main-default" : this.state.activeKey
+        this.setState({ pages: newPages, activeKey })
     }
 
     render() {
@@ -181,6 +183,7 @@ export default class MainTab extends Component {
                     id="menu_sider"
                 >
                     <div className="logo">
+                        <img alt={'logo'} src={logo} />
                         <h1>
                             {Constant.APPNMAE}
                         </h1>

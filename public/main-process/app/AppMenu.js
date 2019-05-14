@@ -137,8 +137,18 @@ let template = [
      }, {
           label: '帮助',
           submenu: [{
-               label: '项目主页：https://github.com/fddi/electron-react-quick-start',
+               label: 'v0.1.2',
                enabled: false
+          }, {
+               type: 'separator'
+          }, {
+               label: '项目主页：https://github.com/fddi/electron-react-quick-start',
+               click: (item, focusedWindow) => {
+                    if (focusedWindow) {
+                         const { shell } = require('electron')
+                         shell.openExternal("https://github.com/fddi/electron-react-quick-start")
+                    }
+               }
           }]
      }
 ]
