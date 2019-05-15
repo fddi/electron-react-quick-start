@@ -16,10 +16,13 @@ import Page404 from './404'
 import Routes from '../routes/RouteIndex'
 import logo from '../assets/electron256.png'
 import '../styles/main.css'
-
+import Env from '../utils/Env'
+if (Env.isElectron()) {
+    const electron = window.require('electron');
+    const win = electron.remote.getCurrentWindow();
+    win.maximize()
+}
 const TabPane = Tabs.TabPane;
-const electron = window.require('electron');
-const win = electron.remote.getCurrentWindow();
 const { Header, Content, Sider } = Layout
 let menus = []
 let menuTops = []
@@ -37,7 +40,6 @@ export default class MainTab extends Component {
             activeKey: "tab-main-default",
             pages: []
         };
-        win.maximize()
     }
 
     componentDidMount() {
@@ -102,8 +104,7 @@ export default class MainTab extends Component {
         pages.map((item, index) => {
             let list = [];
             const TabPage = this.findRoute(item)
-            const pane = (<TabPane tab={item.menuName} key={"tab-main-" + item.menuId} closable={true}
-                style={{ height: "100%", overflow: "auto" }}>
+            const pane = (<TabPane tab={item.menuName} key={"tab-main-" + item.menuId} closable={true} >
                 <TabPage handleTabPage={this.handleTabPage.bind(this)} />
             </TabPane>);
             items.push(pane);
@@ -207,7 +208,7 @@ export default class MainTab extends Component {
                             tabBarStyle={{ margin: 0 }}
                             className="tabs-page"
                         >
-                            <TabPane tab="工作台" key="tab-main-default" closable={false} style={{ height: "100%", overflow: "auto" }}>
+                            <TabPane tab="工作台" key="tab-main-default" closable={false} >
                                 <Workbench handleTabPage={this.handleTabPage.bind(this)} />
                             </TabPane>
                             {this.renderTabPanes(this.state.pages)}

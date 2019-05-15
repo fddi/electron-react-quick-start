@@ -12,6 +12,10 @@ To clone and run this repository you'll need [Git](https://git-scm.com) and [Nod
 git clone https://github.com/fddi/electron-react-quick-start
 # Go into the repository
 cd electron-react-quick-start
+# vs tool
+npm  --vs2015  install --global windows-build-tools
+# set version
+npm config set msvs_version 2015 --global
 # Install dependencies
 npm install
 # Run the app
@@ -21,12 +25,8 @@ npm run build & npm run pack & npm run dist
 ```
 
 ## Features
-### Tab mode
+### electron + react examples
 ![tab-img](https://fddi.github.io/electron-react-quick-start/img-example1.png)
-
-### Call foreign function interface:win32 dll example. 
-![dll-img](https://fddi.github.io/electron-react-quick-start/img-example2.png)
-
 ## Resources for Learning Electron and React
 
 - [electronjs.org/docs](https://electronjs.org/docs) - Electron is an open source library developed by GitHub for building cross-platform desktop applications with HTML, CSS, and JavaScript. 

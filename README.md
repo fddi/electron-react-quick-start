@@ -6,10 +6,13 @@ react + electron + ant 的脚手架项目。
 ## 快速开始
 
 需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (默认安装[npm]http://npmjs.com)。
-windows下编译调用外部函数，需要安装.netframwork4.7以上版本。
+windows下编译调用外部函数，需要安装.netframwork4.5+。
 
 打开命令窗口:
 ```bash
+npm config set registry https://registry.npm.taobao.org --global
+npm config set disturl https://npm.taobao.org/dist --global
+npm config set electron_mirror https://npm.taobao.org/mirrors/electron/ --global
 # 克隆项目到本地
 git clone https://github.com/fddi/electron-react-quick-start
 # 转到项目目录
@@ -26,11 +29,8 @@ npm run start
 npm run build & npm run pack & npm run dist
 ```
 ## 特点
-### 企业后台界面，Tab方式显示示例
+### electron + react 示例
 ![tab-img](https://fddi.github.io/electron-react-quick-start/img-example1.png)
-
-### 调用外部函数接口dll示例，win32环境编译
-![dll-img](https://fddi.github.io/electron-react-quick-start/img-example2.png)
 
 ## 使用到的资源
 

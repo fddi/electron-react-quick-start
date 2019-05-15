@@ -13,14 +13,12 @@ export default class Redirect404 extends Component {
 
      render() {
           return (
-               <Layout style={{ width: "100%", height: "100%" }}>
-                    <Layout.Content style={{ paddingTop: 100, textAlign: "center", height: "100%" }}>
+                    <div style={{ paddingTop: 100, textAlign: "center", height: "100%" }}>
                          <img alt="" src={Icon404} />
                          <br />
                          <br />
                          <p style={{ fontSize: 20, fontWeight: "bold" }}>{Constant.message.loadFail}</p>
-                    </Layout.Content>
-               </Layout>
+                    </div>
           );
      }
 }

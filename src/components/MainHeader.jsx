@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Menu, Icon, message, Modal, Progress, Badge, Popover } from 'antd';
 import Constant from '../common/Constant'
-const { SubMenu } = Menu;
-const { ipcRenderer } = window.require('electron')
+import Env from '../utils/Env'
+const { SubMenu } = Menu
+let ipcRenderer = null
+if (Env.isElectron()) {
+     ipcRenderer = window.require('electron').ipcRenderer
+}
 
 class HeaderView extends Component {
      constructor(props) {
@@ -18,32 +22,36 @@ class HeaderView extends Component {
      }
 
      componentDidMount() {
-          ipcRenderer.on('topic-update-step', (event, msgCode) => {
-               switch (msgCode) {
-                    case 502:
-                         message.destroy()
-                         message.error(Constant.message.updateError)
-                         this.setState({ downLoadStatus: false, visible: false })
-                         break
-                    case 0:
-                         message.destroy()
-                         message.info(Constant.message.updateIsNew)
-                         break
-                    case 1:
-                         message.destroy()
-                         this.setState({ downLoadStatus: true, visible: true })
-               }
-          })
-          ipcRenderer.on('topic-update-loading', (event, progressObj) => {
-               if (this.state.downLoadStatus) {
-                    this.setState({ percent: progressObj.percent })
-               }
-          })
+          if (Env.isElectron()) {
+               ipcRenderer.on('topic-update-step', (event, msgCode) => {
+                    switch (msgCode) {
+                         case 502:
+                              message.destroy()
+                              message.error(Constant.message.updateError)
+                              this.setState({ downLoadStatus: false, visible: false })
+                              break
+                         case 0:
+                              message.destroy()
+                              message.info(Constant.message.updateIsNew)
+                              break
+                         case 1:
+                              message.destroy()
+                              this.setState({ downLoadStatus: true, visible: true })
+                    }
+               })
+               ipcRenderer.on('topic-update-loading', (event, progressObj) => {
+                    if (this.state.downLoadStatus) {
+                         this.setState({ percent: progressObj.percent })
+                    }
+               })
+          }
      }
 
      componentWillUnmount() {
-          ipcRenderer.removeAllListeners("topic-update-step")
-          ipcRenderer.removeAllListeners("topic-update-loading")
+          if (Env.isElectron()) {
+               ipcRenderer.removeAllListeners("topic-update-step")
+               ipcRenderer.removeAllListeners("topic-update-loading")
+          }
      }
 
      componentWillReceiveProps(props) {
@@ -55,6 +63,10 @@ class HeaderView extends Component {
      }
 
      checkUpdate() {
+          if (!Env.isElectron()) {
+               message.info("无须更新")
+               return
+          }
           if (this.state.downLoadStatus) {
                this.setState({ visible: true })
           } else {

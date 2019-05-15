@@ -83,8 +83,5 @@ html,body,#root{
 
 .tabs-page .ant-tabs-content{
   height: 95%;
-}
-
-.ant-card-body{
-  padding: 15px;
+  overflow: auto;
 }

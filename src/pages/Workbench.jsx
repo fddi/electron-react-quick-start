@@ -3,7 +3,7 @@ import { Row, Col, Card } from 'antd';
 import logoReact from '../assets/react.svg'
 import logoElectron from '../assets/electron256.png'
 import LogoAnt from '../assets/antdesign.svg'
-const {shell} = window.require('electron')
+import Env from '../utils/Env';
 const colStyle = {
      borderRadius: "4px",
      textAlign: "center"
@@ -24,7 +24,10 @@ export default class Workbench extends Component {
      }
 
      handleCardClick(url) {
-          shell.openExternal(url)
+          if (Env.isElectron()) {
+               const { shell } = window.require('electron')
+               shell.openExternal(url)
+          }
      }
 
      render() {
