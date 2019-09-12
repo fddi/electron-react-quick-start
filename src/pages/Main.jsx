@@ -102,8 +102,10 @@ export default class MainTab extends Component {
     renderTabPanes(pages) {
         let items = [];
         pages.map((item, index) => {
-            let list = [];
-            const TabPage = this.findRoute(item)
+            let TabPage = item.routeCom
+            if (!TabPage) {
+                TabPage = this.findRoute(item)
+            }
             const pane = (<TabPane tab={item.menuName} key={"tab-main-" + item.menuId} closable={true} >
                 <TabPage handleTabPage={this.handleTabPage.bind(this)} />
             </TabPane>);
@@ -131,6 +133,7 @@ export default class MainTab extends Component {
             loader: () => import(`../pages/${component}`),
             loading: Hold
         })
+        menu.routeCom = LoadableComponent;
         return LoadableComponent
     }
 
