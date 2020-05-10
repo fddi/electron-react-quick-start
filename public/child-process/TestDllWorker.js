@@ -10,6 +10,6 @@ const testDll = ffi.Library(ioPath, {
 })
 testDll.HelloWorld()
 const result = { resultMsg: "ok" }
-console.log(JSON.stringify(result))
+process.send(JSON.stringify(result));
 //关闭子线程
-setTimeout(() => { process.exit() }, 300)
+setTimeout(() => { process.exit() }, 3000)
