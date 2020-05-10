@@ -31,6 +31,7 @@ function createWindow() {
   })
 
   // and load the index.html of the app.
+  logger.info(`file://${path.join(__dirname, '/index.html')}`)
   mainWindow.loadURL(
     isDev
       ? 'http://localhost:3000'

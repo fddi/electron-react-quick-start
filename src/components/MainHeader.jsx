@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Menu, Icon, message, Modal, Progress, Badge, Popover } from 'antd';
+import { Menu, message, Modal, Progress, Badge, Popover } from 'antd';
+import { UserOutlined, MessageOutlined, PoweroffOutlined, CloudDownloadOutlined, } from '@ant-design/icons'
 import Constant from '../common/Constant'
 import Env from '../utils/Env'
+import StringUtils from '../utils/StringTool';
+
 const { SubMenu } = Menu
 let ipcRenderer = null
 if (Env.isElectron()) {
@@ -12,8 +15,6 @@ class HeaderView extends Component {
      constructor(props) {
           super(props);
           this.state = {
-               userName: "",
-               menus: [],
                selectedKeys: [],
                downLoadStatus: false,
                visible: false,
@@ -37,6 +38,9 @@ class HeaderView extends Component {
                          case 1:
                               message.destroy()
                               this.setState({ downLoadStatus: true, visible: true })
+                              break;
+                         default:
+                              break;
                     }
                })
                ipcRenderer.on('topic-update-loading', (event, progressObj) => {
@@ -54,11 +58,11 @@ class HeaderView extends Component {
           }
      }
 
-     componentWillReceiveProps(props) {
-          if (this.state.menus.length <= 0 && props.menus.length > 0) {
-               let selectedKeys = []
-               selectedKeys = [props.menus[0].menuId + ""]
-               this.setState({ menus: props.menus, userName: props.userName, selectedKeys });
+     componentDidUpdate(prevProps, prevState) {
+          const menus = this.props.menus;
+          if (this.state.selectedKeys.length === 0 && menus && menus.length > 0) {
+               let selectedKeys = ["menu-top-" + menus[0].key]
+               this.setState({ selectedKeys });
           }
      }
 
@@ -82,13 +86,12 @@ class HeaderView extends Component {
                     this.setState({ selectedKeys: [] })
                     break;
                case 102:
-                    this.props.linkToLogin();
                     this.setState({ selectedKeys: [] })
                     break;
                case 103:
                     break;
                default:
-                    this.props.handleMenuTop(e)
+                    this.props.menuClick(e)
                     break;
           }
      }
@@ -116,7 +119,7 @@ class HeaderView extends Component {
 
      buildItems(menus) {
           const items = [];
-          if (menus == null || menus.length == 0) {
+          if (StringUtils.isEmpty(menus)) {
                return items;
           }
           for (var i = 0; i < menus.length; i++) {
@@ -126,8 +129,10 @@ class HeaderView extends Component {
      }
 
      getItem(menu) {
-          return (<Menu.Item key={menu.menuId}><a onClick={() => { this.props.handleTabPage(menu) }}>
-               {menu.menuName}</a></Menu.Item>);
+          if (menu.type == "5") {
+               return;
+          }
+          return (<Menu.Item key={"menu-top-" + menu.key} menu={menu}>{menu.title}</Menu.Item>);
      }
 
      render() {
@@ -144,16 +149,16 @@ class HeaderView extends Component {
                          selectedKeys={this.state.selectedKeys}
                          onSelect={(e) => { this.handleMenuSelect(e) }}
                     >
-                         {this.buildItems(this.state.menus)}
+                         {this.buildItems(this.props.menus)}
                          <SubMenu key="header-sm-1" style={{ float: 'right' }}
-                              title={<span><Icon type="user" />{this.state.userName}</span>}>
-                              <Menu.Item key="101"><Icon type="cloud-download" />系统更新</Menu.Item>
-                              <Menu.Item key="102"><Icon type="poweroff" />退出登录</Menu.Item>
+                              title={<span><UserOutlined />{this.props.nickName}</span>}>
+                              <Menu.Item key="101"><CloudDownloadOutlined />系统更新</Menu.Item>
+                              <Menu.Item key="102"><PoweroffOutlined />退出登录</Menu.Item>
                          </SubMenu>
                          <Menu.Item style={{ float: 'right' }} key="103">
                               <Popover placement="bottom" title={text} content={content} trigger="click">
                                    <Badge count={9}>
-                                        <Icon type="message" />
+                                        <MessageOutlined />
                                    </Badge>
                               </Popover>
                          </Menu.Item>

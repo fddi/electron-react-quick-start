@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import {
     Redirect
 } from 'react-router-dom';
-import { Layout, Spin, Tabs } from 'antd';
+import { Layout, Spin, Tabs, } from 'antd';
 import Loadable from 'react-loadable'
 import Constant from '../common/Constant'
-import StringTool from '../utils/StringTool'
+import StringUtils from '../utils/StringTool'
 import Fetch from '../utils/Fetch'
 import Api from '../common/Api'
 import MenuTree from '../components/MenuTree'
@@ -24,15 +24,13 @@ if (Env.isElectron()) {
 }
 const TabPane = Tabs.TabPane;
 const { Header, Content, Sider } = Layout
-let menus = []
-let menuTops = []
+const authInfo = Api.getAuthInfo();
+
 export default class MainTab extends Component {
     constructor(props) {
         super(props);
         this.state = {
             loading: false,
-            tokenInfo: Api.getAuthInfo(),
-            linkToLogin: StringTool.isEmpty(sessionStorage.getItem("tokenInfo")),
             collapsed: false,
             mode: 'inline',
             menuTops: [],
@@ -47,67 +45,76 @@ export default class MainTab extends Component {
     }
 
     componentWillUnmount() {
-        menus = [];
-        menuTops = [];
+        sessionStorage.clear();
     }
 
     onCollapse(collapsed) {
         this.setState({
             collapsed: collapsed,
-            mode: collapsed ? 'vertical' : 'inline',
+            // mode: collapsed ? 'vertical' : 'inline',
         });
     }
 
     getMenus() {
         this.setState({ loading: true });
-        Fetch.post(Api.getApi().menuTree, { token: this.state.tokenInfo.token, menuType: "menu" }, (result) => {
-            if (result && "200" == result.resultCode) {
-                menus = result.resultData.children;
+        Fetch.post(Api.getApi().menuTree, { token: authInfo.token, }, (result) => {
+            if (result && 200 === result.resultCode) {
+                const menuTops = result.resultData.children;
                 let menuTree = [];
-                menus.map((item, index) => {
-                    let menu = {
-                        menuId: item.menuId,
-                        menuName: item.menuName,
-                        menuCode: item.menuCode,
-                        icon: item.icon,
-                    };
-                    menuTops.push(menu);
-                    if (index == 0) {
-                        menuTree = item.children;
-                    }
-                });
+                if (!StringUtils.isEmpty(menuTops) && menuTops.length > 0) {
+                    menuTree = menuTops[0].children;
+                }
                 this.setState({ menuTops: menuTops, menuTree: menuTree });
             }
             this.setState({ loading: false });
         });
     }
 
-    handleMenuTop(e) {
-        let menuTree = [];
-        for (var i = 0; i < menus.length; i++) {
-            if (e.key == menus[i].menuId) {
-                menuTree = menus[i].children;
+    handleMenuClick(e) {
+        const menus = this.state.menuTops;
+        let menuTree = this.state.menuTree;
+        if (e.key.indexOf("menu-top-") >= 0) {
+            for (let i = 0; i < menus.length; i++) {
+                if (e.key === "menu-top-" + menus[i].key) {
+                    menuTree = menus[i].children;
+                    this.setState({ menuTree: menuTree });
+                    break;
+                }
+            }
+        }
+        this.addTabPage(e.item.props.menu);
+    }
+
+    addTabPage(menu) {
+        const pages = this.state.pages;
+        let geted = false;
+        if (StringUtils.isEmpty(menu) || StringUtils.isEmpty(menu.value)) {
+            return
+        }
+        for (var i = 0; i < pages.length; i++) {
+            if (menu.key === pages[i].key) {
+                geted = true;
                 break;
             }
         }
-        this.setState({ menuTree: menuTree });
-    }
-
-    handleLink() {
-        this.setState({
-            linkToLogin: true,
-        });
+        if (geted) {
+            this.setState({ activeKey: "tab-main-" + menu.key });
+            return;
+        }
+        pages.push(menu);
+        this.setState({ pages, activeKey: "tab-main-" + menu.key });
     }
 
     renderTabPanes(pages) {
         let items = [];
-        pages.map((item, index) => {
+        pages.forEach(item => {
             let TabPage = item.routeCom
             if (!TabPage) {
                 TabPage = this.findRoute(item)
             }
-            const pane = (<TabPane tab={item.menuName} key={"tab-main-" + item.menuId} closable={true} >
-                <TabPage handleTabPage={this.handleTabPage.bind(this)} />
+            const pane = (<TabPane tab={(<span style={{ userSelect: 'none', }}>{item.title}</span>)}
+                key={"tab-main-" + item.key} closable={true} >
+                <TabPage addTabPage={this.addTabPage.bind(this)} item={item} />
             </TabPane>);
             items.push(pane);
         });
@@ -117,10 +124,10 @@ export default class MainTab extends Component {
     findRoute(menu) {
         let LoadableComponent = (null)
         let component = null
-        if (!StringTool.isEmpty(menu)) {
+        if (!StringUtils.isEmpty(menu)) {
             for (let index = 0; index < Routes.routes.length; index++) {
                 const route = Routes.routes[index]
-                if (route.path === menu.pageId) {
+                if (route.path === menu.value) {
                     component = route.component
                     break
                 }
@@ -137,53 +144,34 @@ export default class MainTab extends Component {
         return LoadableComponent
     }
 
-    handleTabPage(menu) {
-        const pages = this.state.pages;
-        let geted = false;
-        if (StringTool.isEmpty(menu) || StringTool.isEmpty(menu.pageId)) {
-            this.setState({ activeKey: "tab-main-default" })
-            return
-        }
-        for (var i = 0; i < pages.length; i++) {
-            if (JSON.stringify(menu) === JSON.stringify(pages[i])) {
-                geted = true;
-                break;
-            }
-        }
-        if (geted) {
-            this.setState({ activeKey: "tab-main-" + menu.menuId });
-            return;
-        }
-        pages.push(menu);
-        this.setState({ pages, activeKey: "tab-main-" + menu.menuId });
-    }
-
     onTabEdit = (targetKey, action) => {
         if (action !== "remove") {
             return;
         }
         const pages = this.state.pages;
         let newPages = [];
-        pages.map((item, index) => {
-            if (targetKey != ("tab-main-" + item.menuId)) {
+        let preIndex = 0;
+        pages.forEach((item, index) => {
+            if (targetKey == ("tab-main-" + item.key)) {
+                preIndex = index - 1;
+            }
+            else {
                 newPages.push(item);
             }
         });
-        let activeKey = this.state.activeKey == targetKey ? "tab-main-default" : this.state.activeKey
+        const preActiveKey = preIndex > 0 ? `tab-main-${pages[preIndex].key}` : "tab-main-default";
+        let activeKey = this.state.activeKey === targetKey ? preActiveKey : this.state.activeKey
         this.setState({ pages: newPages, activeKey })
     }
 
     render() {
-        if (this.state.linkToLogin) {
-            return (<Redirect to="/login" />);
-        }
-        return (<Spin wrapperClassName="main-spin" spinning={this.state.loading} tip={Constant.message.pageLoading}>
+        return (<Spin wrapperClassName="main-spin" spinning={this.state.loading}>
             <Layout>
                 <Sider
                     className="main-sider"
                     collapsible
                     collapsed={this.state.collapsed}
-                    onCollapse={(collapsed) => { this.onCollapse(collapsed) }}
+                    onCollapse={this.onCollapse.bind(this)}
                     id="menu_sider"
                 >
                     <div className="logo">
@@ -192,14 +180,13 @@ export default class MainTab extends Component {
                             {Constant.APPNMAE}
                         </h1>
                     </div>
-                    <MenuTree handleTabPage={this.handleTabPage.bind(this)} mode={this.state.mode}
+                    <MenuTree menuClick={this.handleMenuClick.bind(this)} mode={this.state.mode}
                         menus={this.state.menuTree} collapsed={this.state.collapsed} />
                 </Sider>
                 <Layout>
                     <Header className="header">
-                        <MainHeader userName={this.state.tokenInfo.userName} linkToLogin={this.handleLink.bind(this)}
-                            menus={this.state.menuTops} handleMenuTop={this.handleMenuTop.bind(this)}
-                            handleTabPage={this.handleTabPage.bind(this)} />
+                        <MainHeader nickName={authInfo.nickName}
+                            menus={this.state.menuTops} menuClick={this.handleMenuClick.bind(this)} />
                     </Header>
                     <Content className="content">
                         <Tabs
@@ -211,8 +198,9 @@ export default class MainTab extends Component {
                             tabBarStyle={{ margin: 0 }}
                             className="tabs-page"
                         >
-                            <TabPane tab="工作台" key="tab-main-default" closable={false} >
-                                <Workbench handleTabPage={this.handleTabPage.bind(this)} />
+                            <TabPane tab={(<span style={{ userSelect: 'none', }}>工作台</span>)}
+                                key="tab-main-default" closable={false} >
+                                <Workbench addTabPage={this.addTabPage.bind(this)} />
                             </TabPane>
                             {this.renderTabPanes(this.state.pages)}
                         </Tabs>

@@ -10,15 +10,13 @@ import { createHashHistory } from 'history';
 import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
-const Login = asyncComponent(() => import('./pages/Login'));
 const MainTabPage = asyncComponent(() => import('./pages/Main'));
 class App extends Component {
   render() {
     return (
         <HashRouter history={createHashHistory}>
           <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/login" component={Login} />
+            <Route exact path="/" component={MainTabPage} />
             <Route path="/index" component={MainTabPage} />
           </Switch>
         </HashRouter>

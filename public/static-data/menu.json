@@ -1,59 +1,59 @@
 {
      "resultCode": 200,
      "resultData": {
-          "menuId": 1,
-          "menuName": "根节点",
-          "pageId": "/index/workbench",
+          "key": 1,
+          "title": "根节点",
+          "value": "/index/workbench",
           "icon": "icon",
           "children": [
                {
                     "children": [
                          {
-                              "menuId": 111,
-                              "menuName": "原生模块",
-                              "pageId": "",
+                              "key": 111,
+                              "title": "原生模块",
+                              "value": "",
                               "icon": "bars",
                               "children": [
                                    {
-                                        "menuId": 1111,
-                                        "menuName": "本地调用DLL",
-                                        "pageId": "/index/dll",
+                                        "key": 1111,
+                                        "title": "本地调用DLL",
+                                        "value": "/index/dll",
                                         "icon": "bars"
                                    }
                               ]
                          }
                     ],
-                    "menuId": 11,
-                    "menuName": "Electron示例",
-                    "pageId": "",
+                    "key": 11,
+                    "title": "Electron示例",
+                    "value": "",
                     "icon": "bars"
                },
                {
                     "children": [
                          {
-                              "menuId": 121,
-                              "menuName": "页面",
-                              "pageId": "",
+                              "key": 121,
+                              "title": "页面",
+                              "value": "",
                               "icon": "bars",
                               "children": [
                                    {
-                                        "menuId": 1211,
-                                        "menuName": "404页面",
-                                        "pageId": "/index/404",
+                                        "key": 1211,
+                                        "title": "404页面",
+                                        "value": "/index/404",
                                         "icon": "bars"
                                    },
                                    {
-                                        "menuId": 1212,
-                                        "menuName": "加载等待页面",
-                                        "pageId": "/index/hold",
+                                        "key": 1212,
+                                        "title": "加载等待页面",
+                                        "value": "/index/hold",
                                         "icon": "bars"
                                    }
                               ]
                          }
                     ],
-                    "menuId": 12,
-                    "menuName": "界面示例",
-                    "pageId": "",
+                    "key": 12,
+                    "title": "界面示例",
+                    "value": "",
                     "icon": "bars"
                }
           ]

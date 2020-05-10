@@ -1,38 +1,18 @@
 import React, { Component } from 'react';
-import { Menu, Icon } from 'antd';
+import { Menu, } from 'antd';
+import StringUtils from '../utils/StringTool';
 const SubMenu = Menu.SubMenu;
-let menus = [];
 
 export default class MenuTree extends Component {
+
      constructor(props) {
           super(props);
-          const keys = [];
-          menus = props.menus;
-          menus.map((item, index) => {
-               keys.push(item.menuId + "");
-          });
-          const openKeys = props.collapsed ? [] : keys;
           this.state = {
-               openKeys: openKeys,
+               defaultOpenKeys: [],
           }
      }
 
-     componentWillReceiveProps(props) {
-          const keys = [];
-          if (props.menus == null) {
-               return;
-          }
-          props.menus.map((item, index) => {
-               keys.push(item.menuId + "");
-          });
-          if (props.collapsed) {
-               this.setState({ openKeys: [] });
-          } else {
-               if (props.menus.length > 0 && (menus.length == 0 || menus[0].menuId != props.menus[0].menuId)) {
-                    menus = props.menus;
-                    this.setState({ openKeys: keys });
-               }
-          }
+     componentDidMount() {
      }
 
      getItems(menus) {
@@ -44,16 +24,18 @@ export default class MenuTree extends Component {
      }
 
      getNode(menu) {
+          if (menu.type == "5") {
+               return;
+          }
           let menuTree = menu.children;
-          if (menuTree == null || menuTree.length == 0) {
-               return (<Menu.Item key={menu.menuId}>
-                    <a onClick={() => { this.props.handleTabPage(menu) }}><Icon type={menu.icon} />
-                         <span className="nav-text">{menu.menuName}</span></a>
+          if (StringUtils.isEmpty(menuTree) || menuTree.length === 0) {
+               return (<Menu.Item key={"menu-tree-" + menu.key} menu={menu}>
+                    <span className="nav-text">{menu.title}</span>
                </Menu.Item>);
           }
-          return (<SubMenu key={menu.menuId}
-               title={<span><Icon type={menu.icon} />
-                    <span className="nav-text">{menu.menuName}</span></span>}>
+          return (<SubMenu key={"menu-tree-" + menu.key}
+               title={<span>
+                    <span className="nav-text">{menu.title}</span></span>}>
                {this.getItems(menuTree)}
           </SubMenu>
           );
@@ -64,8 +46,7 @@ export default class MenuTree extends Component {
                <Menu
                     theme="dark"
                     mode={this.props.mode}
-                    openKeys={this.state.openKeys}
-                    onOpenChange={(openKeys) => { this.setState({ openKeys }) }}
+                    onClick={this.props.menuClick}
                >
                     {this.getItems(this.props.menus)}
                </Menu>

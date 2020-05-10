@@ -54,8 +54,8 @@ export default class DllTest extends Component {
                     <pre style={{ background: "#ececec", padding: 5 }}>
                          测试时 /publc/addon 下test-ai32.dll 需要nodejs为32位。 <br />
                     </pre>
-                    <Button disabled={this.state.isWeb} type="primary" icon="thunderbolt" onClick={this.handleCallDll}>同步调用dll函数</Button>
-                    <Button disabled={this.state.isWeb} type="primary" icon="thunderbolt" style={{ marginLeft: 5 }} onClick={this.handleCallDllAsync}>异步调用dll函数</Button>
+                    <Button disabled={this.state.isWeb} type="primary" onClick={this.handleCallDll}>同步调用dll函数</Button>
+                    <Button disabled={this.state.isWeb} type="primary" style={{ marginLeft: 5 }} onClick={this.handleCallDllAsync}>异步调用dll函数</Button>
                </Card>
           );
      }
