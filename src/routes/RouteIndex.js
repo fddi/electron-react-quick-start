@@ -8,5 +8,6 @@ export default {
         { path: '/index/404', component: '404' },
         { path: '/index/hold', component: 'Hold' },
         { path: '/index/dll', component: "DllTest" },
+        { path: '/index/activex', component: "ActivexTest" },
     ]
 }

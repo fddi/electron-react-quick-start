@@ -1,9 +1,0 @@
-{
-    "resultCode": 200,
-    "resultMsg": 0,
-    "resultData": {
-        "userId": "guest",
-        "userName": "test",
-        "token": "test"
-    }
-}

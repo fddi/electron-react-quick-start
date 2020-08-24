@@ -19,6 +19,11 @@
                                         "title": "本地调用DLL",
                                         "value": "/index/dll",
                                         "icon": "bars"
+                                   },{
+                                        "key": 1113,
+                                        "title": "调用activex",
+                                        "value": "/index/activex",
+                                        "icon": "bars"
                                    }
                               ]
                          }
