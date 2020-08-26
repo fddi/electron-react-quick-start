@@ -16,6 +16,10 @@ cd electron-react-quick-start
 npm  --vs2015  install --global windows-build-tools
 # set version
 npm config set msvs_version 2015 --global
+# node-activex
+npm install winax
+# rebuild
+npm rebuild winax --runtime=electron --target=9.2.1 --disturl=https://atom.io/download/atom-shell --build-from-source
 # Install dependencies
 npm install
 # Run the app
@@ -25,8 +29,12 @@ npm run build & npm run pack & npm run dist
 ```
 
 ## Features
-### electron + react examples
-![tab-img](https://fddi.github.io/electron-react-quick-start/img-example1.png)
+### all examples
+<img src="https://fddi.github.io/electron-react-quick-start/img-example2.png" width="60%">
+
+### nav 
+<img src="https://fddi.github.io/electron-react-quick-start/img-example1.png" width="60%">
+
 ## Resources for Learning Electron and React
 
 - [electronjs.org/docs](https://electronjs.org/docs) - Electron is an open source library developed by GitHub for building cross-platform desktop applications with HTML, CSS, and JavaScript. 

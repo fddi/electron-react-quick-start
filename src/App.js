@@ -10,14 +10,19 @@ import { createHashHistory } from 'history';
 import 'moment/locale/zh-cn';
 
 moment.locale('zh-cn');
-const MainTabPage = asyncComponent(() => import('./pages/Main'));
+const MainPage = asyncComponent(() => import('./pages/Main'));
+const MainTabPage = asyncComponent(() => import('./pages/MainTab'));
+const Dll = asyncComponent(() => import('./pages/DllTest'));
+const Activex = asyncComponent(() => import('./pages/ActivexTest'));
 class App extends Component {
   render() {
     return (
         <HashRouter history={createHashHistory}>
           <Switch>
-            <Route exact path="/" component={MainTabPage} />
+            <Route exact path="/" component={MainPage} />
             <Route path="/index" component={MainTabPage} />
+            <Route path="/dll" component={Dll} />
+            <Route path="/activex" component={Activex} />
           </Switch>
         </HashRouter>
     );

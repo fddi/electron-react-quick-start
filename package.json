@@ -1,6 +1,6 @@
 {
   "name": "electron-react-quick-start",
-  "version": "0.1.2",
+  "version": "1.0.0",
   "main": "public/electron.js",
   "homepage": "./",
   "dependencies": {

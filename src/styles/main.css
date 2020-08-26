@@ -1,59 +1,65 @@
-html,body,#root{
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
+html,
+body,
+#root {
+  width  : 100%;
+  height : 100%;
+  margin : 0;
+  padding: 0;
 }
 
-.main-spin{
+.main-spin {
   height: 100%;
 }
 
-.main-spin .ant-spin-container{
+.main-spin .ant-spin-container {
   height: 100%;
 }
 
-.ant-layout{
-    height: 100%;
+.ant-layout {
+  height: 100%;
 }
 
-.ant-layout-content{
-    overflow: auto;
-}
-
-.main-sider{
-  width: 200px;
+.ant-layout-content {
   overflow: auto;
 }
 
-.main-sider.ant-layout-sider-collapsed{
+.main-sider {
+  width   : 200px;
+  overflow: auto;
+}
+
+.main-sider.ant-layout-sider-collapsed {
   overflow: visible;
 }
 
-#menu_sider .logo{
-  height: 64px;
-  width: 200px;
-  padding: 16px 4px;
-  display: flex;
+#menu_sider .logo {
+  height   : 64px;
+  width    : 200px;
+  padding  : 16px 4px;
+  display  : flex;
   flex-flow: row;
 }
-#menu_sider .logo img{
-  margin-left: 10px;
+
+#menu_sider .logo img {
+  margin-left : 10px;
   margin-right: 5px;
-  width: 32px;
-  height: 32px;
+  width       : 32px;
+  height      : 32px;
 }
-#menu_sider .logo h1{
-  line-height: 32px;
-  font-size: 16px;
-  color: #ffffff;
-  vertical-align:middle;
+
+#menu_sider .logo h1 {
+  line-height   : 32px;
+  font-size     : 16px;
+  color         : #ffffff;
+  vertical-align: middle;
 }
-#menu_sider.ant-layout-sider-collapsed .logo h1{
+
+#menu_sider.ant-layout-sider-collapsed .logo h1 {
   display: none;
 }
+
 #menu_sider.ant-layout-sider-collapsed .anticon {
-  font-size: 16px;
+  font-size  : 16px;
   margin-left: 8px;
 }
 
@@ -61,27 +67,63 @@ html,body,#root{
   display: none;
 }
 
-#menu_sider.ant-layout-sider-collapsed .ant-menu-submenu-vertical > .ant-menu-submenu-title:after {
+#menu_sider.ant-layout-sider-collapsed .ant-menu-submenu-vertical>.ant-menu-submenu-title:after {
   display: none;
 }
 
-#menu_sider.ant-layout-sider-collapsed .ant-menu-sub .nav-text{
+#menu_sider.ant-layout-sider-collapsed .ant-menu-sub .nav-text {
   display: inline-block;
 }
 
-.content{
-  background: #ffffff;
-  padding: 5px;
-  margin: 18px;
-  height: 100%;
+.content {
+  padding      : 5px;
+  margin       : 18px;
+  height       : 100%;
   border-radius: 4px;
 }
 
-.tabs-page{
+.tabs-page {
   height: 100%;
 }
 
-.tabs-page .ant-tabs-content{
-  height: 95%;
+.tabs-page .ant-tabs-content {
+  height  : 95%;
   overflow: auto;
+}
+
+.layout-main {
+  background-image: linear-gradient(#87e8de, #40a9ff, #5cdbd3);
+}
+
+.tool-content {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.grid-card {
+  width     : 602px;
+  text-align: center;
+  margin    : auto
+}
+
+.grid-item {
+  width     : 200px;
+  height    : 200px;
+  text-align: center;
+  cursor    : pointer;
+}
+
+.grid-link {
+  color     : #000;
+  display   : block;
+  width     : 100%;
+  height    : 100%;
+  text-align: center;
+  padding   : 15px;
+}
+
+.grid-icon {
+  font-size    : 60px;
+  margin-bottom: 20px;
+  color        : #1890ff;
 }

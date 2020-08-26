@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Menu, message, Modal, Progress, Badge, Popover } from 'antd';
-import { UserOutlined, MessageOutlined, PoweroffOutlined, CloudDownloadOutlined, } from '@ant-design/icons'
+import { UserOutlined, MessageOutlined, PoweroffOutlined, CloudDownloadOutlined, RollbackOutlined } from '@ant-design/icons'
 import Constant from '../common/Constant'
 import Env from '../utils/Env'
 import StringUtils from '../utils/StringTool';
+import { Link } from 'react-router-dom';
 
 const { SubMenu } = Menu
 let ipcRenderer = null
@@ -161,6 +162,9 @@ class HeaderView extends Component {
                                         <MessageOutlined />
                                    </Badge>
                               </Popover>
+                         </Menu.Item>
+                         <Menu.Item style={{ float: 'right' }} key="104">
+                              <Link to="/"><RollbackOutlined /></Link>
                          </Menu.Item>
                     </Menu>
                     <Modal

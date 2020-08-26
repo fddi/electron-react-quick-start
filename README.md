@@ -1,12 +1,13 @@
 ## [English](README-en.md)
 react + electron + ant 的脚手架项目。
 
+包含调用本地DLL和activex控件的示例。
+
 项目基于[Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## 快速开始
 
-需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (默认安装[npm]http://npmjs.com)。
-windows下编译调用外部函数，需要安装.netframwork4.5+。
+需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/) (示例使用32位dll文件，nodejs需使用32位版本)。
 
 打开命令窗口:
 ```bash
@@ -21,6 +22,10 @@ cd electron-react-quick-start
 npm  --vs2015  install --global windows-build-tools
 # 设置vs 版本
 npm config set msvs_version 2015 --global
+# 安装node-activex
+npm install winax
+# 需要对照electron版本，重新编译activex模块
+npm rebuild winax --runtime=electron --target=9.2.1 --disturl=https://atom.io/download/atom-shell --build-from-source
 # 安装
 npm install
 # 运行
@@ -29,8 +34,11 @@ npm run start
 npm run build & npm run pack & npm run dist
 ```
 ## 特点
-### electron + react 示例
-![tab-img](https://fddi.github.io/electron-react-quick-start/img-example1.png)
+### 包含示例
+<img src="https://fddi.github.io/electron-react-quick-start/img-example2.png" width="60%">
+
+### 管理界面导航示例
+<img src="https://fddi.github.io/electron-react-quick-start/img-example1.png" width="60%">
 
 ## 使用到的资源
 

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, dialog } = require('electron')
 const isDev = require('electron-is-dev')
 const glob = require('glob')
 const path = require('path')
@@ -9,8 +9,8 @@ global.appConfig = nconf
 
 function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1000,
+    height: 800,
     backgroundColor: '#2e2c29',
     webPreferences: {
       nodeIntegration: true
