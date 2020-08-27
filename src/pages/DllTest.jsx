@@ -28,8 +28,7 @@ export default class DllTest extends Component {
           ipcRenderer.once('dll-test', (e, args) => {
                console.log(e)
                if (args) {
-                    const result = JSON.parse(args)
-                    message.info(result.resultMsg)
+                    message.info(args)
                }
           })
      }

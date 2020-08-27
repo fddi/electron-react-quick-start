@@ -8,9 +8,14 @@ const callTestDll = () => {
      logger.info(childPath);
      const child = child_process.fork(childPath);
      child.on('message', (m) => {
+          logger.info(m)
           const result = iconv.decode(m, 'GBK')
           logger.info(result)
-          BrowserWindow.getFocusedWindow().webContents.send('dll-test',result)
+          const wins = BrowserWindow.getAllWindows();
+          if (wins != null && wins.length > 0) {
+               wins[0].webContents.send('dll-test', result)
+          }
+          child.kill();
      });
 }
 
