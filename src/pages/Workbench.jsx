@@ -32,9 +32,9 @@ export default class Workbench extends Component {
 
      render() {
           return (
-               <Row style={{ margin: "30px 15px" }}>
-                    <Col style={{ ...colStyle, background: "#993333" }}
-                         xs={{ span: 5, offset: 0 }} lg={{ span: 7, offset: 0 }}>
+               <Row style={{ margin: "30px 15px" }} gutter={15}>
+                    <Col style={{ ...colStyle,}}
+                         xs={{ span: 8 }}>
                          <Card
                               style={{ height: 280 }}
                               hoverable
@@ -47,8 +47,8 @@ export default class Workbench extends Component {
                               />
                          </Card>
                     </Col>
-                    <Col style={{ ...colStyle, background: "#CCCC00" }}
-                         xs={{ span: 8, offset: 1 }} lg={{ span: 7, offset: 1 }}>
+                    <Col style={{ ...colStyle, }}
+                         xs={{ span: 8 }}>
                          <Card
                               style={{ height: 280 }}
                               hoverable
@@ -61,8 +61,8 @@ export default class Workbench extends Component {
                               />
                          </Card>
                     </Col>
-                    <Col style={{ ...colStyle, background: "#333366" }}
-                         xs={{ span: 8, offset: 1 }} lg={{ span: 7, offset: 1 }}>
+                    <Col style={{ ...colStyle,}}
+                         xs={{ span: 8, }}>
                          <Card
                               style={{ height: 280 }}
                               hoverable

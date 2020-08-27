@@ -9,6 +9,7 @@
     "electron-updater": "^4.0.6",
     "ffi-napi": "^2.4.4",
     "history": "^4.9.0",
+    "iconv-lite": "^0.6.2",
     "moment": "^2.27.0",
     "nconf": "^0.10.0",
     "react": "^16.12.0",
@@ -39,7 +40,7 @@
     "postinstall": "electron-builder install-app-deps",
     "start": "concurrently \"cross-env BROWSER=none react-app-rewired start\" \"wait-on http://localhost:3000 && electron .\"",
     "pack": "electron-builder --dir",
-    "dist": "npx build --publish=never --ia32  --win -c.extraMetadata.main=build/electron.js"
+    "dist": "electron-builder build --publish=never --ia32  --win -c.extraMetadata.main=build/electron.js"
   },
   "build": {
     "directories": {

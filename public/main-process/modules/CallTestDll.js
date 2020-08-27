@@ -5,6 +5,7 @@ const { BrowserWindow } = require('electron')
 const logger = require('./logger.js')
 const callTestDll = () => {
      const childPath = path.join(__dirname, '../../child-process/TestDllWorker.js')
+     logger.info(childPath);
      const child = child_process.fork(childPath);
      child.on('message', (m) => {
           const result = iconv.decode(m, 'GBK')

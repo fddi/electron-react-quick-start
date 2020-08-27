@@ -22,8 +22,8 @@ export default class DllTest extends Component {
      }
 
      handleCallDll() {
+          const {remote,ipcRenderer} = window.require('electron');
           const callTestDll = remote.require("./main-process/modules/CallTestDll.js")
-          const ipcRenderer = window.require('electron').ipcRenderer
           callTestDll.call()
           ipcRenderer.once('dll-test', (e, args) => {
                console.log(e)
