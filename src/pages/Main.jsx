@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Spin, Layout, Card, Button, } from 'antd'
 import { LinkOutlined, HomeOutlined, WindowsOutlined, AppstoreOutlined, IeOutlined } from '@ant-design/icons';
-import '../styles/main.css'
 import { Link } from 'react-router-dom';
 import Env from '../utils/Env'
 

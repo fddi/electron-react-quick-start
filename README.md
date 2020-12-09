@@ -1,4 +1,3 @@
-## [English](README-en.md)
 react + electron + ant 的脚手架项目。
 
 包含调用本地DLL和activex控件的示例。

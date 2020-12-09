@@ -8,6 +8,8 @@ import asyncComponent from "./utils/AsyncComponent";
 import moment from 'moment';
 import { createHashHistory } from 'history';
 import 'moment/locale/zh-cn';
+import './styles/app.less';
+import './styles/main.css';
 
 moment.locale('zh-cn');
 const MainPage = asyncComponent(() => import('./pages/Main'));
