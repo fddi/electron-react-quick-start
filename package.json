@@ -4,7 +4,7 @@
   "main": "public/electron.js",
   "homepage": "./",
   "dependencies": {
-    "antd": "^4.9.2",
+    "antd": "^4.12.2",
     "electron-is-dev": "^1.1.0",
     "electron-updater": "^4.0.6",
     "ffi-napi": "^2.4.7",
