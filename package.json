@@ -28,7 +28,7 @@
     "craco-less": "^1.17.0",
     "concurrently": "^4.0.1",
     "cross-env": "^5.2.0",
-    "electron": "^9.2.1",
+    "electron": "^11.5.0",
     "electron-builder": "^22.8.0",
     "wait-on": "^3.2.0"
   },
