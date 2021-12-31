@@ -1,11 +1,8 @@
-const { app, BrowserWindow, dialog } = require('electron')
+const { app, BrowserWindow } = require('electron')
 const isDev = require('electron-is-dev')
 const glob = require('glob')
 const path = require('path')
 const logger = require('./main-process/modules/logger.js')
-const configPath = path.resolve('config.json')
-const nconf = require('nconf').file(configPath)
-global.appConfig = nconf
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -13,12 +10,12 @@ function createWindow() {
     height: 800,
     backgroundColor: '#2e2c29',
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      preload: path.join(__dirname, 'preload.js')
     }
   })
 
   const localFile = `file://${path.join(__dirname, '/index.html')}`
-  logger.info(localFile)
   win.loadURL(
     isDev
       ? 'http://localhost:3000'
@@ -28,6 +25,7 @@ function createWindow() {
   // win.webContents.openDevTools()
 }
 
+logger.info(`app start path[file://${path.join(__dirname, '/index.html')}]`);
 app.whenReady().then(createWindow)
 
 // Quit when all windows are closed.

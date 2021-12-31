@@ -2,31 +2,28 @@ import React, { Component } from 'react';
 import {
   HashRouter,
   Route,
-  Switch
+  Routes
 } from 'react-router-dom';
 import asyncComponent from "./utils/AsyncComponent";
 import moment from 'moment';
 import { createHashHistory } from 'history';
 import 'moment/locale/zh-cn';
-import './styles/app.less';
+import 'antd/dist/antd.variable.min.css';
 import './styles/main.css';
 
 moment.locale('zh-cn');
 const MainPage = asyncComponent(() => import('./pages/Main'));
-const MainTabPage = asyncComponent(() => import('./pages/MainTab'));
-const Dll = asyncComponent(() => import('./pages/DllTest'));
-const Activex = asyncComponent(() => import('./pages/ActivexTest'));
+const Page = asyncComponent(() => import('./pages/Page'));
+
 class App extends Component {
   render() {
     return (
-        <HashRouter history={createHashHistory}>
-          <Switch>
-            <Route exact path="/" component={MainPage} />
-            <Route path="/index" component={MainTabPage} />
-            <Route path="/dll" component={Dll} />
-            <Route path="/activex" component={Activex} />
-          </Switch>
-        </HashRouter>
+      <HashRouter history={createHashHistory}>
+        <Routes>
+          <Route exact path="/" element={<MainPage />} />
+          <Route path="/p/*" element={<Page />} />
+        </Routes>
+      </HashRouter>
     );
   }
 }

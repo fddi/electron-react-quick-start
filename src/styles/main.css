@@ -1,103 +1,22 @@
 html,
 body,
 #root {
-  width  : 100%;
-  height : 100%;
+  height : 100vh;
   margin : 0;
   padding: 0;
 }
 
-.main-spin {
-  height: 100%;
-}
-
-.main-spin .ant-spin-container {
-  height: 100%;
+figure pre {
+  font-family  : "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", "monospace";
+  border-radius: 3px;
 }
 
 .ant-layout {
-  height: 100%;
-}
-
-.ant-layout-content {
-  overflow: auto;
-}
-
-.main-sider {
-  width   : 200px;
-  overflow: auto;
-}
-
-.main-sider.ant-layout-sider-collapsed {
-  overflow: visible;
-}
-
-#menu_sider .logo {
-  height   : 64px;
-  width    : 200px;
-  padding  : 16px 4px;
-  display  : flex;
-  flex-flow: row;
-}
-
-#menu_sider .logo img {
-  margin-left : 10px;
-  margin-right: 5px;
-  width       : 32px;
-  height      : 32px;
-}
-
-#menu_sider .logo h1 {
-  line-height   : 32px;
-  font-size     : 16px;
-  color         : #ffffff;
-  vertical-align: middle;
-}
-
-#menu_sider.ant-layout-sider-collapsed .logo h1 {
-  display: none;
-}
-
-#menu_sider.ant-layout-sider-collapsed .anticon {
-  font-size  : 16px;
-  margin-left: 8px;
-}
-
-#menu_sider.ant-layout-sider-collapsed .nav-text {
-  display: none;
-}
-
-#menu_sider.ant-layout-sider-collapsed .ant-menu-submenu-vertical>.ant-menu-submenu-title:after {
-  display: none;
-}
-
-#menu_sider.ant-layout-sider-collapsed .ant-menu-sub .nav-text {
-  display: inline-block;
-}
-
-.content {
-  padding      : 5px;
-  margin       : 18px;
-  height       : 100%;
-  border-radius: 4px;
-}
-
-.tabs-page {
-  height: 100%;
-}
-
-.tabs-page .ant-tabs-content {
-  height  : 95%;
-  overflow: auto;
+  height: 100vh;
 }
 
 .layout-main {
-  background-image: linear-gradient(#87e8de, #40a9ff, #5cdbd3);
-}
-
-.tool-content {
-  margin-top: 100px;
-  text-align: center;
+  justify-content: center;
 }
 
 .grid-card {
@@ -114,7 +33,6 @@ body,
 }
 
 .grid-link {
-  color     : #000;
   display   : block;
   width     : 100%;
   height    : 100%;
@@ -125,5 +43,4 @@ body,
 .grid-icon {
   font-size    : 60px;
   margin-bottom: 20px;
-  color        : #1890ff;
 }
