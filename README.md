@@ -49,7 +49,7 @@ npm install
 # 运行
 npm run start
 ```
-<img src="https://fddi.github.io/electron-react-quick-start/img-example2.png" width="60%">
+<img src="https://gitee.com/fddi/electron-react-quick-start/raw/master/docs/img-example1.png" width="60%">
 
 ### 4. 打包
 ```bash
