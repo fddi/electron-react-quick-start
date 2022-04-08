@@ -1,31 +1,27 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   HashRouter,
   Route,
   Routes
 } from 'react-router-dom';
-import asyncComponent from "./utils/AsyncComponent";
+import LoadPage from "./util/LoadPage";
 import moment from 'moment';
 import { createHashHistory } from 'history';
 import 'moment/locale/zh-cn';
 import 'antd/dist/antd.variable.min.css';
-import './styles/main.css';
+import './style/main.css';
 
 moment.locale('zh-cn');
-const MainPage = asyncComponent(() => import('./pages/Main'));
-const Page = asyncComponent(() => import('./pages/Page'));
+const MainPage = LoadPage(() => import('./page/Main'));
+const Page = LoadPage(() => import('./page/Page'));
 
-class App extends Component {
-  render() {
-    return (
-      <HashRouter history={createHashHistory}>
-        <Routes>
-          <Route exact path="/" element={<MainPage />} />
-          <Route path="/p/*" element={<Page />} />
-        </Routes>
-      </HashRouter>
-    );
-  }
+export default function App(props) {
+  return (
+    <HashRouter history={createHashHistory}>
+      <Routes>
+        <Route exact path="/" element={<MainPage />} />
+        <Route path="/p/*" element={<Page />} />
+      </Routes>
+    </HashRouter>
+  );
 }
-
-export default App;

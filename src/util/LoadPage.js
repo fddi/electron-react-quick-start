@@ -1,0 +1,9 @@
+import Loadable from 'react-loadable'
+import Hold from '../page/Hold'
+export default function (loader, loading = Hold, delay = 3000) {
+    return Loadable({
+        loader,
+        loading,
+        delay
+    });
+}

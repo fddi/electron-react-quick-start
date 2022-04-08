@@ -18,13 +18,9 @@ electron + react 的脚手架项目。
 
 ```bash
 node -v
-v16.13.1
-# nodejs自带npm版本为8.1.x,node-gyp版本8.3.x 需要升级
-npm -g install npm
-# 安装最新npm后，查看版本
+v16.14.2
 npm -v
-8.3.0
-npm install -g node-gyp
+8.5.0
 npx node-gyp -v
 v8.4.1
 ```
@@ -32,11 +28,12 @@ v8.4.1
 ### 2. 设置npm镜像:
 ```bash
 # 设置npm镜像
-npm config set registry https://registry.npm.taobao.org --global
-npm config set disturl https://npm.taobao.org/dist --global
-npm config set electron_mirror https://cdn.npm.taobao.org/dist/electron/ --global
+npm config set registry https://registry.npm.taobao.org
+npm config set disturl https://npm.taobao.org/dist
+npm config set electron_mirror https://cdn.npm.taobao.org/dist/electron/
 ```
 ### 3. 运行项目
+> 需要管理员权限，可能需要关闭360等杀毒软件。
 ```bash
 # 克隆项目到本地
 git clone https://github.com/fddi/electron-react-quick-start
@@ -45,7 +42,8 @@ cd electron-react-quick-start
 # 设置vs 版本 
 npm config set msvs_version 2022
 # 安装
-npm install
+npm install --legacy-peer-deps
+# 项目使用到craco官方目前不支持react-scripts@5 ，使用依赖检查参数 --legacy-peer-deps
 # 运行
 npm run start
 ```
@@ -73,18 +71,24 @@ npm run build & npm run pack-32 & npm run dist-32
 ### 1. 无法找到VS工具
 > gyp ERR! stack Error: Could not find any Visual Studio installation to use
 
-VS2022 需要node-gyp8.4.0以上版本才能支持,由于npm自带版本过低导致。
+情况一：VS2022 需要node-gyp8.4.0以上版本才能支持,由于npm自带版本过低导致 需要升级nodejs,或升级npm：
 ```bash
-置vs 版本 
+设置vs 版本 
 npm config set msvs_version 2022
 npm -g install npm
 # 安装最新npm后，查看版本
 npm -v
-8.3.0
+8.5.0
 npm install -g node-gyp
 npx node-gyp -v
 v8.4.1
 ```
+情况二：删除淘宝镜像地址配置
+```bash
+npm config list
+npm config delete electron_mirror
+```
+情况三：使用PowerShell
 ### 2. electron无法安装
 > Electron failed to install correctly, please delete node_modules/electron and try installing again
 
@@ -96,11 +100,11 @@ electron.exe
 ### 3. 打包网络超时
 > 下载nsis-3.0.4.2.7z超时
 
-网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\{User}\AppData\Local\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0。
+网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应7z包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0。
 
 > 下载winCodeSign超时
 
-网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\{User}\AppData\Local\electron-builder\Cache\nsis\nsis-3.0.4.2。
+网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\nsis\nsis-3.0.4.2。
 
 
 ## 使用到的资源
