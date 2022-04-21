@@ -7,7 +7,7 @@ if (Env.isElectron()) {
     isWeb = false
 }
 
-export default function (props) {
+export default function DllDemo(props) {
     const [a, setA] = useState();
     const [b, setB] = useState();
 

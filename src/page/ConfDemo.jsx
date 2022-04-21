@@ -7,7 +7,7 @@ if (Env.isElectron()) {
     isWeb = false
 }
 
-export default function(props) {
+export default function ConfDemo(props) {
     const [key, setKey] = useState('param-one')
 
     useEffect(() => {

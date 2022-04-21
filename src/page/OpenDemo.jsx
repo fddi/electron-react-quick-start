@@ -7,7 +7,7 @@ if (Env.isElectron()) {
     envWeb = false
 }
 
-export default function (props) {
+export default function OpenDemo(props) {
     const [url, setUrl] = useState("https://www.bing.com");
 
     useEffect(() => {

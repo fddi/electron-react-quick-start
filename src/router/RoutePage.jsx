@@ -8,7 +8,7 @@ const ConfDemoPage = LoadPage(() => import('../page/ConfDemo'));
 const DllDemoPage = LoadPage(() => import('../page/DllDemo'));
 const OpenDemoPage = LoadPage(() => import('../page/OpenDemo'));
 
-export default function (props) {
+export default function RoutePage(props) {
     return (
         <Routes>
             <Route path="conf-demo" element={<ConfDemoPage />} />

@@ -4,7 +4,7 @@ import { HomeOutlined, } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import RoutePage from '../router/RoutePage';
 
-export default function (props) {
+export default function Page(props) {
     const name = '当前页';
     return (
         <Layout>

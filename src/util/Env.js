@@ -1,5 +1,5 @@
 export default {
-    isElectron: function() {
+    isElectron: function () {
         // Renderer process
         if (typeof window !== 'undefined' && typeof window.process === 'object' && window.process.type === 'renderer') {
             return true;

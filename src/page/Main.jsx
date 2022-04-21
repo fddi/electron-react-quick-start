@@ -16,7 +16,7 @@ const antdUrl = "https://ant-design.gitee.io/index-cn";
 const electronUrl = "https://electronjs.org";
 const reactUrl = "https://reactjs.org";
 const dc = localStorage.getItem("primaryColor") || "#3f51b5"
-export default function (props) {
+export default function Main(props) {
      const [loading, setLoading] = useState(false)
      const [primaryColor, setPrimaryColor] = useState(dc)
 
