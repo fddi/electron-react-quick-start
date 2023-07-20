@@ -106,6 +106,14 @@ electron.exe
 
 网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\nsis\nsis-3.0.4.2。
 
+### 4. electron 24.3.1 报错 Error: Error in native callback
+[参考这个issue解决方案](https://github.com/node-ffi-napi/node-ffi-napi/issues/238#issuecomment-1461642322)
+```bash
+npm uninstall ffi-napi
+npm uninstall ref-napi
+npm install @lwahonen/ffi-napi
+npm install @lwahonen/ref-napi
+```
 
 ## 使用到的资源
 

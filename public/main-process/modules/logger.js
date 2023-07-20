@@ -1,10 +1,10 @@
 const path = require('path')
 const fs = require('fs')
-const moment = require('moment')
+const dayjs = require('dayjs')
 
 const logfactory = function (str, tag) {
-    const formatDate = moment().format('YYYYMMDD')
-    const formatDateTime = moment().format('YYYY-MM-DD HH:mm:ss')
+    const formatDate = dayjs().format('YYYYMMDD')
+    const formatDateTime = dayjs().format('YYYY-MM-DD HH:mm:ss')
     const logPath = path.resolve('log')
     try {
         fs.accessSync(logPath, fs.constants.R_OK | fs.constants.W_OK);

@@ -17,7 +17,7 @@ export default function DllDemo(props) {
 
     const handleCalculate = () => {
         if (a == null || b == null) {
-            return message.warn('请输入值');
+            return message.warning('请输入值');
         }
         const sum = window.electron.callTestDll(a, b);
         Modal.success({ content: `由DLL函数计算： ${a} + ${b} = ${sum}` });

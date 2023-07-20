@@ -1,7 +1,8 @@
 function sum(a, b) {
+     debugger
      const logger = require('./logger.js')
-     const ffi = require('ffi-napi')
-     const ref = require('ref-napi')
+     const ffi = require('@lwahonen/ffi-napi')
+     const ref = require('@lwahonen/ref-napi')
      const iconv = require('iconv-lite')
      const path = require('path')
      // const ioPath = path.resolve('addon/dll-test-ai32.dll')
