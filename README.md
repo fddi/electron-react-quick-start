@@ -18,19 +18,18 @@ electron + react 的脚手架项目。
 
 ```bash
 node -v
-v16.14.2
+v18.16.0
 npm -v
-8.5.0
+v9.5.1
 npx node-gyp -v
-v8.4.1
+v9.3.1
 ```
 
 ### 2. 设置npm镜像:
 ```bash
 # 设置npm镜像
-npm config set registry https://registry.npm.taobao.org
-npm config set disturl https://npm.taobao.org/dist
-npm config set electron_mirror https://cdn.npm.taobao.org/dist/electron/
+npm config set registry https://registry.npmmirror.com/
+# 设置环境变量 ELECTRON_MIRROR=https://registry.npmmirror.com/
 ```
 ### 3. 运行项目
 > 需要管理员权限，可能需要关闭360等杀毒软件。
@@ -42,8 +41,7 @@ cd electron-react-quick-start
 # 设置vs 版本 
 npm config set msvs_version 2022
 # 安装
-npm install --legacy-peer-deps
-# 项目使用到craco官方目前不支持react-scripts@5 ，使用依赖检查参数 --legacy-peer-deps
+npm install
 # 运行
 npm run start
 ```
@@ -92,7 +90,7 @@ npm config delete electron_mirror
 ### 2. electron无法安装
 > Electron failed to install correctly, please delete node_modules/electron and try installing again
 
-node_modules/electron文件夹没有dist文件夹。[淘宝镜像](https://npm.taobao.org/mirrors/electron)下载对应包，解压至node_modules/electron/dist内。node_modules/electron新建path.txt,输入以下内容保存
+node_modules/electron文件夹没有dist文件夹。[淘宝镜像](https://registry.npmmirror.com/binary.html?path=electron/)下载对应包，解压至node_modules/electron/dist内。node_modules/electron新建path.txt,输入以下内容保存
 ```
 electron.exe
 ```
@@ -100,11 +98,11 @@ electron.exe
 ### 3. 打包网络超时
 > 下载nsis-3.0.4.2.7z超时
 
-网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应7z包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0。
+网络原因，[淘宝镜像](https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/)下载对应包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\nsis\nsis-3.0.4.2。
 
 > 下载winCodeSign超时
 
-网络原因，[淘宝镜像](https://npm.taobao.org/mirrors/electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\nsis\nsis-3.0.4.2。
+网络原因，[淘宝镜像](https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0。
 
 ### 4. electron 24.3.1 报错 Error: Error in native callback
 [参考这个issue解决方案](https://github.com/node-ffi-napi/node-ffi-napi/issues/238#issuecomment-1461642322)
