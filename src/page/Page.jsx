@@ -1,12 +1,17 @@
 import React, { Component } from 'react'
-import { Layout, Breadcrumb, Space, Card } from 'antd'
+import { ConfigProvider, Layout, Breadcrumb, Card, theme } from 'antd'
 import { HomeOutlined, } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import RoutePage from '../router/RoutePage';
 
 export default function Page(props) {
     const name = '当前页';
-    return (
+    const defaultType = localStorage.getItem("themeType") || "0";
+    return (<ConfigProvider
+        theme={{
+            algorithm: defaultType == '1' ? theme.darkAlgorithm : theme.defaultAlgorithm,
+        }}
+    >
         <Layout>
             <Breadcrumb style={{ marginTop: 15, marginLeft: 15 }} separator=">">
                 <Breadcrumb.Item>
@@ -17,5 +22,6 @@ export default function Page(props) {
                 <RoutePage />
             </Card>
         </Layout>
+    </ConfigProvider>
     )
 }

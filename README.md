@@ -13,7 +13,7 @@ electron + react 的脚手架项目。
 
 安装Python 3.x版本，请使用[最新稳定版本](https://www.python.org/downloads)。
 
-安装[visual studio build tool](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools)或 [visual studio Community](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&rel=17)，安装时选择c++桌面开发项。示例使用VS Community 2022。
+安装[visual studio build tool](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools)或 [visual studio Community](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&rel=17)，安装时选择c++桌面开发项。本示例使用VS Community 2022。
 >nodejs原生编译工具node-gyp 8.4.x以上版本才支持vs 2022，请确保npm环境下的node-gyp为最新版本。
 
 ```bash
@@ -56,14 +56,11 @@ npm run start
 ### 4. 打包
 ```bash
 # 打包(win64位)
-npm run build & npm run pack & npm run dist
+npm run build & npm run package & npm run make
 ```
 
-> win32版本打包,nodejs需要安装32位版本，可以使用nvm工具切换nodejs版本。
-```bash
-# 打包(win32位)
-npm run build & npm run pack-32 & npm run dist-32
-```
+本项目使用electron-forge工具打包，打包配置请修改forge.config.js文件。
+[查看packagerConfig配置API](https://electron.github.io/packager/main/interfaces/Options.html#extraResource)
 ## 问题汇总
 
 ### 1. 无法找到VS工具
@@ -104,21 +101,12 @@ electron.exe
 
 网络原因，[淘宝镜像](https://registry.npmmirror.com/binary.html?path=electron-builder-binaries/)下载对应winCodeSign包，解压至C:\Users\\{User}\AppData\Local\electron-builder\Cache\winCodeSign\winCodeSign-2.6.0。
 
-### 4. electron 24.3.1 报错 Error: Error in native callback
-[参考这个issue解决方案](https://github.com/node-ffi-napi/node-ffi-napi/issues/238#issuecomment-1461642322)
-```bash
-npm uninstall ffi-napi
-npm uninstall ref-napi
-npm install @lwahonen/ffi-napi
-npm install @lwahonen/ref-napi
-```
-
 ## 使用到的资源
 
 - [electronjs.org/docs](https://electronjs.org/docs) - Electron是由GitHub开发的一个开源库，用于构建具有HTML，CSS和JavaScript的跨平台桌面应用程序。
 - [reactjs.org/docs](https://reactjs.org/docs/getting-started.html) - React是一个用于构建用户界面的JavaScript库。
 - [ant.design/docs](https://ant.design/docs) - 一套企业级的 UI 设计语言和 React 实现。
-- [node-ffi-napi](https://github.com/node-ffi-napi/node-ffi-napi) - Node.js的外部函数接口（FFI），N-API样式。
+- [Koffi](https://koffi.dev/) - 是一个快速且易于使用的 Node.js C FFI 模块。
 
 ## 许可证
 [MIT License](LICENSE.md)

@@ -13,18 +13,20 @@ const logoStyle = {
      width: 80
 }
 const antdUrl = "https://ant-design.gitee.io/index-cn";
-const electronUrl = "https://electronjs.org";
+const electronUrl = "https://www.electronjs.org";
 const reactUrl = "https://reactjs.org";
 export default function Main(props) {
+     const defaultType = localStorage.getItem("themeType") || "0";
      const [loading, setLoading] = useState(false)
-     const [themeType, setThemeType] = useState('0')
-
+     const [themeType, setThemeType] = useState(defaultType)
 
      const onChangeComplete = (color, event) => {
           if (color.hex == '#000000') {
                setThemeType('1')
+               localStorage.setItem("themeType", "1");
           } else {
                setThemeType('0')
+               localStorage.setItem("themeType", "0");
           }
      }
 

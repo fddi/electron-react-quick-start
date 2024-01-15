@@ -1,7 +1,7 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Button, message, Input, Space } from 'antd';
 import Env from '../util/Env'
-import Prism from 'prismjs';
+import { PreCode, code } from '../config/preCode';
 let isWeb = true
 if (Env.isElectron()) {
     isWeb = false
@@ -9,10 +9,6 @@ if (Env.isElectron()) {
 
 export default function ConfDemo(props) {
     const [key, setKey] = useState('param-one')
-
-    useEffect(() => {
-        Prism.highlightAll()
-    }, [])
 
     const handleGetAppConfig = () => {
         if (key == null) {
@@ -27,21 +23,9 @@ export default function ConfDemo(props) {
         <Fragment>
             <p>读取项目根目录下config.json配置信息：</p>
             <p>在preload.js绑定方法：</p>
-            <pre className="line-numbers">
-                <code className="language-javascript">
-                    {`getAppConfig: (key) => {
-    const configPath = path.resolve('config.json');
-    const config = require('nconf').file(configPath);
-    return config.get(key);
-}`}
-                </code>
-            </pre>
+            <PreCode language='jsx' code={code.codeGetConfig} />
             <p>渲染进程调用：</p>
-            <pre className="line-numbers">
-                <code className="language-javascript">
-                    {` window.electron.getAppConfig("param-one"); `}
-                </code>
-            </pre>
+            <PreCode language='jsx' code={code.codeGetConfig1} />
             <p>修改根目录文件config.json里的键值，读取测试</p>
             <Space direction='horizontal'>
                 <Input placeholder='输入配置key' value={key} onChange={(e) => { setKey(e.target.value) }} />

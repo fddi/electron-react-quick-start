@@ -15,7 +15,7 @@ function createWindow() {
     }
   })
 
-  const localFile = `file://${path.join(__dirname, '/index.html')}`
+  const localFile = `file://${path.join(__dirname, '../build/index.html')}`
   win.loadURL(
     isDev
       ? 'http://localhost:3000'
@@ -25,7 +25,7 @@ function createWindow() {
   // win.webContents.openDevTools()
 }
 
-logger.info(`app start path[file://${path.join(__dirname, '/index.html')}]`);
+logger.info(`app start path[file://${path.join(__dirname, '../build/index.html')}]`);
 app.whenReady().then(createWindow)
 
 // Quit when all windows are closed.
