@@ -1,8 +1,7 @@
 module.exports = {
   packagerConfig: {
     asar: true,
-    extraResource: ["./resource/dll-test-ai32.dll", "./resource/dll-test.dll", "./resource/config.json"],
-
+    extraResource: ["./resources/dll-test-ai32.dll", "./resources/dll-test.dll", "./resources/config.json"]
   },
   rebuildConfig: {},
   makers: [

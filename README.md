@@ -56,11 +56,11 @@ npm run start
 ### 4. 打包
 ```bash
 # 打包(win64位)
-npm run build & npm run package & npm run make
+npm run build  & npm run make
 ```
 
 本项目使用electron-forge工具打包，打包配置请修改forge.config.js文件。
-[查看packagerConfig配置API](https://electron.github.io/packager/main/interfaces/Options.html#extraResource)
+[查看packagerConfig配置API](https://electron.github.io/packager/main/interfaces/Options.html)
 ## 问题汇总
 
 ### 1. 无法找到VS工具
@@ -103,9 +103,9 @@ electron.exe
 
 ## 使用到的资源
 
-- [electronjs.org/docs](https://electronjs.org/docs) - Electron是由GitHub开发的一个开源库，用于构建具有HTML，CSS和JavaScript的跨平台桌面应用程序。
-- [reactjs.org/docs](https://reactjs.org/docs/getting-started.html) - React是一个用于构建用户界面的JavaScript库。
-- [ant.design/docs](https://ant.design/docs) - 一套企业级的 UI 设计语言和 React 实现。
+- [electronjs](https://www.electronjs.org/docs) - Electron是由GitHub开发的一个开源库，用于构建具有HTML，CSS和JavaScript的跨平台桌面应用程序。
+- [reactjs](https://react.dev/) - React是一个用于构建用户界面的JavaScript库。
+- [ant.design](https://ant-design.gitee.io/index-cn) - 一套企业级的 UI 设计语言和 React 实现。
 - [Koffi](https://koffi.dev/) - 是一个快速且易于使用的 Node.js C FFI 模块。
 
 ## 许可证

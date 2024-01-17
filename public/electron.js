@@ -52,3 +52,6 @@ function loadApp() {
 }
 
 loadApp()
+
+// 生成快捷方式
+if(require('electron-squirrel-startup')) return;

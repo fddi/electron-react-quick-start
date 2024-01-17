@@ -1,6 +1,8 @@
 {
   "name": "electron-react-quick-start",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "author": "核桃钳",
+  "description": "electron+react 的脚手架",
   "main": "public/electron.js",
   "homepage": "./",
   "dependencies": {
