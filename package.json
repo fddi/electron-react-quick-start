@@ -42,7 +42,9 @@
     "test": "react-scripts test --env=jsdom",
     "forge-start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "package-32": "electron-forge package --arch=ia32",
+    "make-32": "electron-forge make --arch=ia32"
   },
   "browserslist": {
     "production": [
