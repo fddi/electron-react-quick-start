@@ -1,7 +1,9 @@
+"use client"
+
 import React, { Fragment, useState } from 'react';
 import { Button, message, Input, Space } from 'antd';
-import Env from '../util/Env'
-import { PreCode, code } from '../config/preCode';
+import Env from '@/util/Env'
+import { PreCode, code } from '@/config/preCode';
 let isWeb = true
 if (Env.isElectron()) {
     isWeb = false
