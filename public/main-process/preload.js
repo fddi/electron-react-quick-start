@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld('electron', {
     },
     callTestDll: (a, b) => {
         console.log("starting run dll")
-        const callDll = require("./main-process/modules/call-dll.js")
+        const callDll = require("./modules/call-dll.js")
         return callDll.callTestDll(a, b)
     },
     openWindow: (url) => ipcRenderer.invoke("load-url", url)

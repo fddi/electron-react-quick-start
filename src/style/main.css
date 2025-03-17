@@ -16,13 +16,14 @@ figure pre {
 }
 
 .layout-main {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
 }
 
 .grid-card {
   width     : 602px;
   text-align: center;
-  margin    : auto
 }
 
 .grid-item {

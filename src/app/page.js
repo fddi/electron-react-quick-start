@@ -9,6 +9,8 @@ import logoReact from '../asset/react.svg'
 import logoElectron from '../asset/electron256.png'
 import LogoAnt from '../asset/antdesign.svg'
 import { CirclePicker } from 'react-color';
+import '@/style/main.css';
+const { Content } = Layout;
 const logoStyle = {
   textAlign: "center",
   height: 80,
@@ -52,16 +54,16 @@ export default function Main(props) {
     >
       <Layout className="layout-main" >
         <Spin spinning={loading}>
-          <Layout.Content className="tool-content">
-            <Row justify="center" style={{ padding: 8 }}>
-              <CirclePicker width={80} colors={["#ffffff", "#000000"]}
-                onChangeComplete={onChangeComplete} circleSize={15} circleSpacing={8} />
-            </Row>
+          <Row justify="center" style={{ padding: 8 }}>
+            <CirclePicker width={80} colors={["#ffffff", "#000000"]}
+              onChangeComplete={onChangeComplete} circleSize={15} circleSpacing={8} />
+          </Row>
+          <Content className="layout-main">
             <Card className="grid-card">
               <Card.Grid className="grid-item">
                 <Link href={
                   {
-                    pathname: "/p/conf-demo",
+                    pathname: "/p/conf-demo.html",
                     query: { title: '读取本地配置文件' },
                   }
                 } className="grid-link">
@@ -69,12 +71,12 @@ export default function Main(props) {
                   <p>读取本地配置文件</p></Link>
               </Card.Grid>
               <Card.Grid className="grid-item">
-                <Link href="/p/dll-demo" className="grid-link">
+                <Link href="/p/dll-demo.html" className="grid-link">
                   <AppstoreOutlined className="grid-icon" />
                   <p>调用DLL动态库</p></Link>
               </Card.Grid>
               <Card.Grid className="grid-item">
-                <Link href="/p/open-demo" className="grid-link">
+                <Link href="/p/open-demo.html" className="grid-link">
                   <WindowsOutlined className="grid-icon" />
                   <p>打开新窗口</p></Link>
               </Card.Grid>
@@ -100,7 +102,7 @@ export default function Main(props) {
                 />
               </Card.Grid>
             </Card>
-          </Layout.Content>
+          </Content>
         </Spin>
       </Layout>
     </ConfigProvider>

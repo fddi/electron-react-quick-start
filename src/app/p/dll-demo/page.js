@@ -1,6 +1,6 @@
 "use client"
 import React, { Fragment, useState, useEffect } from 'react';
-import { Button, message, InputNumber, Modal } from 'antd';
+import { Button, App, InputNumber } from 'antd';
 import Env from '@/util/Env'
 import { PreCode, code } from '@/config/preCode';
 let isWeb = true
@@ -11,13 +11,14 @@ if (Env.isElectron()) {
 export default function DllDemo(props) {
     const [a, setA] = useState();
     const [b, setB] = useState();
+    const { message, modal } = App.useApp();
 
     const handleCalculate = () => {
         if (a == null || b == null) {
             return message.warning('请输入值');
         }
         const sum = window.electron.callTestDll(a, b);
-        Modal.success({ content: `由DLL函数计算： ${a} + ${b} = ${sum}` });
+        modal.success({ content: `由DLL函数计算： ${a} + ${b} = ${sum}` });
     }
     return (
         <Fragment>
