@@ -1,7 +1,7 @@
-const { app } = require('electron');
-const { initializeAppLifecycle } = require('./main-process/app-lifecycle');
-const { createMainWindow } = require('./main-process/window-manager');
-const { registerIPCHandlers } = require('./main-process/ipc-handlers');
+import { app } from 'electron';
+import { initializeAppLifecycle } from './main-process/app-lifecycle.js';
+import { createMainWindow } from './main-process/window-manager.js';
+import { registerIPCHandlers } from './main-process/ipc-handlers.js';
 
 // 应用生命周期管理
 initializeAppLifecycle(app);

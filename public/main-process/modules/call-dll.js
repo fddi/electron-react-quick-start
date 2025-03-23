@@ -1,7 +1,8 @@
+import logger from './logger.js'
+import koffi from 'koffi'
+import path from 'path'
+
 function sum(a, b) {
-     const logger = require('./logger.js')
-     const koffi = require('koffi');
-     const path = require('path')
      // const ioPath = path.resolve('resources/dll-test-ai32.dll')
      const ioPath = path.resolve('resources/dll-test.dll')
      const lib = koffi.load(ioPath);
@@ -13,8 +14,6 @@ function sum(a, b) {
      return sum;
 }
 
-module.exports = {
-     callTestDll: function (a, b) {
-          return sum(a, b);
-     }
+export function callTestDll(a, b) {
+     return sum(a, b);
 }

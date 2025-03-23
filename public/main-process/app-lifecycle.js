@@ -1,5 +1,5 @@
-const { BrowserWindow, Menu } = require('electron')
-const { createMainWindow } = require('./window-manager');
+import { BrowserWindow, Menu, shell } from 'electron';
+import { createMainWindow } from './window-manager.js';
 
 let zoomFactor = 1.0
 
@@ -146,7 +146,6 @@ let template = [
             label: '项目主页：https://gitee.com/fddi/electron-react-quick-start.git',
             click: (item, focusedWindow) => {
                 if (focusedWindow) {
-                    const { shell } = require('electron')
                     shell.openExternal("https://gitee.com/fddi/electron-react-quick-start.git")
                 }
             }
@@ -154,7 +153,7 @@ let template = [
     }
 ]
 
-exports.initializeAppLifecycle = (app) => {
+export function initializeAppLifecycle(app) {
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) createMainWindow();
     });
@@ -177,4 +176,4 @@ exports.initializeAppLifecycle = (app) => {
             contextMenu.popup(win, params.x, params.y)
         })
     })
-};
+}

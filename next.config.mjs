@@ -6,7 +6,7 @@ const nextConfig = {
     trailingSlash: true, 
     images: { unoptimized: true },
     assetPrefix: isProd ? './' : '',
-    distDir: 'build',
+    distDir: 'build'
 };
 
 export default nextConfig;

@@ -63,7 +63,7 @@ export default function Main(props) {
               <Card.Grid className="grid-item">
                 <Link href={
                   {
-                    pathname: "/p/conf-demo.html",
+                    pathname: "/p/conf-demo",
                     query: { title: '读取本地配置文件' },
                   }
                 } className="grid-link">
@@ -71,12 +71,12 @@ export default function Main(props) {
                   <p>读取本地配置文件</p></Link>
               </Card.Grid>
               <Card.Grid className="grid-item">
-                <Link href="/p/dll-demo.html" className="grid-link">
+                <Link href="/p/dll-demo" className="grid-link">
                   <AppstoreOutlined className="grid-icon" />
                   <p>调用DLL动态库</p></Link>
               </Card.Grid>
               <Card.Grid className="grid-item">
-                <Link href="/p/open-demo.html" className="grid-link">
+                <Link href="/p/open-demo" className="grid-link">
                   <WindowsOutlined className="grid-icon" />
                   <p>打开新窗口</p></Link>
               </Card.Grid>

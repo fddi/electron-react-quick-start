@@ -1,16 +1,19 @@
-const { contextBridge, ipcRenderer } = require('electron');
-const path = require('path')
+import { contextBridge, ipcRenderer } from 'electron';
+import { resolve } from 'path';
+import nconf from 'nconf';
+import { callTestDll } from './modules/call-dll.js'
+
+console.log("starting preload")
 contextBridge.exposeInMainWorld('electron', {
     getAppConfig: (key) => {
         console.log("starting read config.json")
-        const configPath = path.resolve('./resources/config.json');
-        const config = require('nconf').file(configPath);
+        const configPath = resolve('./resources/config.json');
+        const config = nconf.file(configPath);
         return config.get(key);
     },
     callTestDll: (a, b) => {
         console.log("starting run dll")
-        const callDll = require("./modules/call-dll.js")
-        return callDll.callTestDll(a, b)
+        callTestDll(a, b)
     },
     openWindow: (url) => ipcRenderer.invoke("load-url", url)
 })

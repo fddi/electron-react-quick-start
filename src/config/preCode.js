@@ -1,20 +1,14 @@
-import { Highlight, themes } from "prism-react-renderer";
+import React from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { darcula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 export function PreCode({ language, code }) {
-    return (<Highlight
-        theme={themes.dracula} language={language} code={code}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-            <pre className={className} style={style}>
-                {tokens.map((line, i) => (
-                    <div {...getLineProps({ line, key: i })}>
-                        {line.map((token, key) => (
-                            <span {...getTokenProps({ token, key })} />
-                        ))}
-                    </div>
-                ))}
-            </pre>
-        )}
-    </Highlight>)
+    return (
+        <SyntaxHighlighter language={language || "javascript"}
+            showLineNumbers style={darcula}>
+            {code}
+        </SyntaxHighlighter>
+    );
 }
 
 export const code = {
@@ -30,7 +24,6 @@ export const code = {
     `,
     codeDll: `
     function sum(a, b) {
-        const logger = require('./logger.js')
         const koffi = require('koffi');
         const path = require('path')
         // const ioPath = path.resolve('resource/dll-test-ai32.dll')
@@ -38,11 +31,16 @@ export const code = {
         const lib = koffi.load(ioPath);
         const funcSum = lib.func('sum','int',['int','int']);
         const sum = funcSum(parseInt(a),parseInt(b));
-        logger.info("dll-test.dll sum() result:" + sum);
-        console.log("dll-test.dll sum() result:" + sum);
         return sum;
+        // 指针类型示例
+        // const funcTest = lib.func('int test(const char* code1, const char* code2,char* outMsg)');
+        // let outMsg = Buffer.alloc(200);
+        // const code1 = 'someStr';
+        // const code2 = 'someStr';
+        // const resultCode = funcTest(code1, code2, outMsg);
+        // outMsg = iconv.decode(outMsg, "GBK");
+        // return outMsg;
    }
-   
    module.exports = {
         callTestDll: function (a, b) {
              return sum(a, b);
@@ -56,7 +54,7 @@ export const code = {
     codeDll2: `
     window.electron.callTestDll(a, b);
     `,
-    codeOpen:`
+    codeOpen: `
     const openWindow = (url) => {
         let win = new BrowserWindow({
             width: 1000, height: 800, webPreferences: {
@@ -74,10 +72,10 @@ export const code = {
         return true;
     })
     `,
-    codeOpen1:`
+    codeOpen1: `
     openWindow: (url) => ipcRenderer.invoke("load-url", url)
     `,
-    codeOpen2:`
+    codeOpen2: `
     window.electron.openWindow(url);
     `
 
