@@ -18,17 +18,17 @@ export default function ConfDemo(props) {
             message.warn("请输入key");
             return;
         }
-        const param = window.electron.getAppConfig(key);
-        message.info(`配置项${key} 值 :${param}`);
+        window.electron.getAppConfig(key).then((result) => {
+            message.info(`配置项${key} 值 :${result}`);
+        }).catch((err) => {
+            message.error(err)
+        });;
     }
 
     return (
         <Fragment>
             <p>读取项目根目录下config.json配置信息：</p>
-            <p>在preload.js绑定方法：</p>
             <PreCode language='javascript' code={code.codeGetConfig} />
-            <p>渲染进程调用：</p>
-            <PreCode language='javascript' code={code.codeGetConfig1} />
             <p>修改根目录文件config.json里的键值，读取测试</p>
             <Space direction='horizontal'>
                 <Input placeholder='输入配置key' value={key} onChange={(e) => { setKey(e.target.value) }} />

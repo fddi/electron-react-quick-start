@@ -12,18 +12,13 @@ export function PreCode({ language, code }) {
 }
 
 export const code = {
-    codeGetConfig: `
-    getAppConfig: (key) => {
-        const configPath = path.resolve('config.json');
-        const config = require('nconf').file(configPath);
+    codeGetConfig: `const getAppConfig = (key) => {
+        console.log("starting read config.json")
+        const configPath = resolve('./resources/config.json');
+        const config = nconf.file(configPath);
         return config.get(key);
-    }
-    `,
-    codeGetConfig1: `
-    window.electron.getAppConfig("param-one");
-    `,
-    codeDll: `
-    function sum(a, b) {
+    }`,
+    codeDll: `function sum(a, b) {
         const koffi = require('koffi');
         const path = require('path')
         // const ioPath = path.resolve('resource/dll-test-ai32.dll')
@@ -40,43 +35,17 @@ export const code = {
         // const resultCode = funcTest(code1, code2, outMsg);
         // outMsg = iconv.decode(outMsg, "GBK");
         // return outMsg;
-   }
-   module.exports = {
-        callTestDll: function (a, b) {
-             return sum(a, b);
-        }
    }`,
-    codeDll1: `
-    callTestDll: (a, b) => {
-        const callDll = require("./main-process/modules/call-dll.js")
-        callDll.callTestDll(a, b)
-    }`,
-    codeDll2: `
-    window.electron.callTestDll(a, b);
-    `,
-    codeOpen: `
-    const openWindow = (url) => {
-        let win = new BrowserWindow({
-            width: 1000, height: 800, webPreferences: {
-                preload: path.join(__dirname, 'preload.js')
-            }
-        })
-        win.on('closed', () => {
-            win = null
-        })
-        win.loadURL(url)
-        win.setMenu(null)
-    }
-    ipcMain.handle('load-url', async (event, ...args) => {
-        openWindow(args[0]);
-        return true;
+    codeOpen: `const openWindow = (url) => {
+    let win = new BrowserWindow({
+        width: 1000, height: 800, webPreferences: {
+            preload: join(__dirname, 'preload.js')
+        }
     })
-    `,
-    codeOpen1: `
-    openWindow: (url) => ipcRenderer.invoke("load-url", url)
-    `,
-    codeOpen2: `
-    window.electron.openWindow(url);
-    `
-
+    win.on('closed', () => {
+        win = null
+    })
+    win.loadURL(url)
+    win.setMenu(null)
+}`,
 }

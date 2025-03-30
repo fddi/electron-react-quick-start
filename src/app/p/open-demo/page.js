@@ -18,12 +18,8 @@ export default function OpenDemo(props) {
 
     return (
         <Fragment>
-            <p>主进程icp.js实现打开窗口方法，并监听消息：</p>
+            <p>打开窗口：</p>
             <PreCode language='javascript' code={code.codeOpen} />
-            <p>preload.js绑定方法：</p>
-            <PreCode language='javascript' code={code.codeOpen1} />
-            <p>渲染进程调用：</p>
-            <PreCode language='javascript' code={code.codeOpen2} />
             <Space direction='horizontal'>
                 <Input value={url} onChange={(e) => { setUrl(e.target.value) }} />
                 <Button disabled={envWeb} type="primary" onClick={onOpenNew}>打开窗口测试！</Button>

@@ -10,13 +10,13 @@ let app = null;
 const __filename = fileURLToPath(import.meta.url);
 // 获取当前文件的目录路径
 const __dirname = dirname(__filename);
-console.log(join(__dirname, 'preload.js'))
 export function createMainWindow(settings) {
     const win = new BrowserWindow({
         width: 1000,
         height: 600,
         backgroundColor: '#2e2c29',
         webPreferences: {
+            sandbox: true,
             nodeIntegration: false,
             contextIsolation: true,
             preload: join(__dirname, 'preload.js')
@@ -28,7 +28,7 @@ export function createMainWindow(settings) {
         if (app == null) {
             app = new Koa();
             // 设置静态文件目录
-            const staticDir = join(__dirname, 'build');
+            const staticDir = join(__dirname, '../../build');
             app.use(serve(staticDir));
             // 启动服务器
 
@@ -41,6 +41,8 @@ export function createMainWindow(settings) {
         }
         win.loadURL('http://localhost:3210');
     } else {
+        // 打开开发者工具
+        win.webContents.openDevTools();
         win.loadURL('http://localhost:3000');
     }
     return win;

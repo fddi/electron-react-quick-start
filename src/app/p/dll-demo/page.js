@@ -17,17 +17,16 @@ export default function DllDemo(props) {
         if (a == null || b == null) {
             return message.warning('请输入值');
         }
-        const sum = window.electron.callTestDll(a, b);
-        modal.success({ content: `由DLL函数计算： ${a} + ${b} = ${sum}` });
+        window.electron.callTestDll(a, b).then((result) => {
+            modal.success({ content: `由DLL函数计算： ${a} + ${b} = ${result}` });
+        }).catch((err) => {
+            message.error(error)
+        });
     }
     return (
         <Fragment>
             <p>测试的dll-demo.dll实现了sum()方法。主进程call-dll.js调用核心实现：</p>
             <PreCode language='javascript' code={code.codeDll} />
-            <p>preload.js绑定方法：</p>
-            <PreCode language='javascript' code={code.codeDll1} />
-            <p>渲染进程调用：</p>
-            <PreCode language='javascript' code={code.codeDll2} />
             <InputNumber min={1} max={10000} value={a} onChange={(v) => { setA(v) }} /> <span> + </span>
             <InputNumber min={1} max={10000} value={b} onChange={(v) => { setB(v) }} />
             <Button disabled={!Env.isElectron()} type="primary" onClick={handleCalculate}>调用计算！</Button>

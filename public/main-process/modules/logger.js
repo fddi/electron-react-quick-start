@@ -26,12 +26,14 @@ const logfactory = function (str, tag) {
     }
 }
 
-export function info(str) {
-    logfactory(str, "[info]")
-}
-export function notice(str) {
-    logfactory(str, "[notice]")
-}
-export function error(str) {
-    logfactory(str, "[error]")
-}
+export default {
+    info: function (str) {
+        logfactory(str, "[info]")
+    },
+    notice: function (str) {
+        logfactory(str, "[notice]")
+    },
+    error: function (str) {
+        logfactory(str, "[error]")
+    }
+} 
