@@ -11,19 +11,7 @@ electron + react 的脚手架项目。
 
 需要安装 [Git](https://git-scm.com) 和 [Node.js](https://nodejs.org/en/download/)。
 
-安装Python 3.x版本，请使用[最新稳定版本](https://www.python.org/downloads)。
-
-安装[visual studio build tool](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=BuildTools)或 [visual studio Community](https://visualstudio.microsoft.com/zh-hans/thank-you-downloading-visual-studio/?sku=Community&rel=17)，安装时选择c++桌面开发项。本示例使用VS Community 2022。
->nodejs原生编译工具node-gyp 8.4.x以上版本才支持vs 2022，请确保npm环境下的node-gyp为最新版本。
-
-```bash
-node -v
-v18.16.0
-npm -v
-v9.5.1
-npx node-gyp -v
-v9.3.1
-```
+> Koffi 相比 Node-FFI/N-API 的主要优势是不需要预编译nodejs原生编译工具，不需要使用node-gyp库。仅调用现有库：不需要 VS Studio 或任何编译工具。 
 
 ### 2. 设置npm镜像:
 ```bash
@@ -38,12 +26,10 @@ npm config set registry https://registry.npmmirror.com/
 git clone https://github.com/fddi/electron-react-quick-start
 # 转到项目目录
 cd electron-react-quick-start
-# 设置vs 版本 
-npm config set msvs_version 2022
 # 安装
 npm install
 # 运行
-npm run start
+npm run dev
 ```
 - 运行界面
 
