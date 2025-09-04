@@ -37,7 +37,7 @@
     "@testing-library/user-event": "^14.6.1",
     "concurrently": "^9.1.2",
     "cross-env": "^7.0.3",
-    "electron": "^35.0.2",
+    "electron": "^35.7.5",
     "wait-on": "^8.0.3"
   },
   "scripts": {
