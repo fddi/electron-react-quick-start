@@ -1,3 +1,5 @@
+
+
 electron + react 的脚手架项目。
 
 ## 项目特点
@@ -42,7 +44,7 @@ npm run dev
 ### 4. 打包
 ```bash
 # 打包(win64位)
-npm run build  & npm run make
+npm run build && npm run make
 ```
 
 本项目使用electron-forge工具打包，打包配置请修改forge.config.js文件。
